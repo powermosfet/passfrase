@@ -3,6 +3,8 @@ Generate passphrases
 
 This is a really small python script that reads words from a text file, and picks a number of them randomly to create a passphrase. A sample file with norwegian words is included in the repository.
 
+The script is inspired by https://xkcd.com/936/
+
 ##Usage:
 ```
 > python passfrase.py [-h] [-w WORDS] [-s] filename
