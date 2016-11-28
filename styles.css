@@ -1,0 +1,14 @@
+body {
+  background: #293939;
+  color: #FFFFFF;
+}
+
+.passphrase-panel {
+  background: #D0D000;
+  border: 3px solid black;
+}
+
+.passphrase-text {
+  color: #101010;
+  text-align: center;
+}
