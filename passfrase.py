@@ -1,7 +1,7 @@
 import argparse, random, codecs, math
 
 def passfrase(filename, n_words, sep, alphabet, min, max):
-    words = list(codecs.open(filename, encoding='utf-8'))
+    words = list(open(filename))
     words = [ w.strip() for w in words ]
     words = [ w for w in words if len(w) >= min and len(w) <= max ]
     if not words:
