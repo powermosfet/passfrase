@@ -1,4 +1,3 @@
-a
 a-aksjer
 a-ark
 a-beta
@@ -35,7 +34,6 @@ a-stallen
 a-varsel
 a-varselet
 a-vitamin
-a-å
 aabakken
 aabenraa
 aaberge
@@ -4862,8 +4860,6 @@ aziz
 azores
 azpilicueta
 azteca
-å
-b
 b-finale
 b-finalen
 b-lag
@@ -12074,9 +12070,6 @@ bøyle
 bøås
 bügmüncher
 b-er
-c
-c-j
-c-span
 c-vitamin
 c-vitaminer
 ca
@@ -13392,7 +13385,6 @@ cøliaki
 cøliaki-test
 cøliakien
 cøliakitesten
-d
 d-dagen
 d-journalisten
 d-lux
@@ -16780,7 +16772,6 @@ døypefonten
 døypte
 døyr
 düsseldorf
-e
 e-aviser
 e-bok
 e-bokas
@@ -19579,7 +19570,6 @@ europavegen
 europavei
 europaveien
 europe
-europe-v-facebookorg
 european
 europearane
 europearar
@@ -22168,8 +22158,6 @@ fitnessutøver
 fitzgerald
 fitzpatrick
 five
-five-a-side
-five-a-side-fotball
 fivelmyrane
 fivelstad
 fives
@@ -23315,7 +23303,6 @@ fn-prosjekt
 fn-rapporten
 fn-resolusjon
 fn-resolusjonar
-fn-s
 fn-sambandet
 fn-sekretariatet
 fn-sjef
@@ -26599,7 +26586,6 @@ frisch
 frisch-senteret
 frisert
 frisk
-frisk-o-og
 friskare
 friske
 friskende
@@ -27788,7 +27774,6 @@ føyer
 føyset
 für
 fürth
-g
 g-gruppen
 g-huset
 g-landene
@@ -31273,7 +31258,6 @@ gøymt
 gülistan
 gündogan
 günter
-h
 h-ano
 ha
 ha-medlemmet
@@ -36388,7 +36372,6 @@ høyvann
 høyverdig
 hübert
 hürriyet
-i
 i-en
 i-landsproblemer
 iaa
@@ -39176,7 +39159,6 @@ izmir
 izzy
 iøyenfallende
 iøynefallende
-j
 ja
 ja-bunken
 ja-et
@@ -40446,8 +40428,6 @@ jøssundområdet
 jøte
 jürg
 jürgen
-k
-k-g
 k-løysinga
 k-sjef
 ka
@@ -47423,7 +47403,6 @@ køyrt
 køyrte
 kühne
 kürkcü
-l
 l-bøtter
 la
 la-baserte
@@ -51901,7 +51880,6 @@ løyver
 løyvet
 løyvingane
 lübeck
-m
 m-city
 m-motorveien
 m-pesa
@@ -57869,8 +57847,6 @@ münchen-trener
 münchen-treneren
 münchenen
 münchens
-n
-n-tv
 na
 naaf
 naalsund
@@ -61232,7 +61208,6 @@ nürnberg
 nürnberg-oppholdet
 nürnberg-stoppar
 nürnbergs
-o
 o-zone
 oakland
 oase
@@ -64487,8 +64462,6 @@ oyelowo
 ozbilici
 ozgen
 ozzy
-p
-p-a
 p-miljøet
 p-morgens
 p-pille
@@ -69212,7 +69185,6 @@ pøsende
 pøser
 pøsregn
 pøst
-q
 qaida
 qaida-fraksjonen
 qaida-gruppering
@@ -69271,7 +69243,6 @@ qureshi
 qusai
 qusini
 qyer
-r
 r-en
 raabe
 raad
@@ -73888,7 +73859,6 @@ røyster
 røysterett
 røysterunde
 rügert-raustein
-s
 sa
 saab
 saabas
@@ -87485,7 +87455,6 @@ søylen
 søylene
 søyler
 süddeutsche
-t
 t-bane
 t-banelinja
 t-banelinje
@@ -88530,9 +88499,6 @@ temposetteren
 tempraturen
 temptations
 ten
-ten-t
-ten-t-nettet
-ten-t-nettverket
 tena
 tenåringer
 tendens
@@ -90184,8 +90150,6 @@ tns
 tnt
 to
 to-instansbehandling
-to-to-a-pi
-to-tre
 to-trekk
 to-treåring
 toalett
@@ -93437,7 +93401,6 @@ tøystykke
 tøyvask
 tøyvaskemidlet
 tübingen
-u
 u-em
 u-europamesteren
 u-fellesstarten
@@ -96559,7 +96522,6 @@ uøkonomisk
 uønskede
 uønsket
 uønskte
-v
 v-byrådet
 v-day
 v-mdg-avtale
@@ -100619,7 +100581,6 @@ vêrveke
 vøra
 vørt
 vøyenenga
-w
 w-league
 wa
 waag
@@ -101210,7 +101171,6 @@ wåsjø
 wæhler
 wærnes
 würst
-x
 x-bionic
 x-factor
 x-faktor
@@ -101219,7 +101179,6 @@ x-files
 x-games
 x-meter
 x-socks
-x-t
 xabi
 xavi
 xavier
@@ -101251,7 +101210,6 @@ xs
 xt
 xtreme
 xu
-y
 yaalon
 yabuha
 yachten
@@ -101581,7 +101539,6 @@ yves
 yvette
 yvonne
 yx-stasjonen
-z
 zaatari
 zaatari-leiren
 zabihullah
@@ -101750,7 +101707,6 @@ zyklon
 zymer
 zürich
 zürich-hotellet
-å
 åberg
 ådne
 åenget
@@ -102079,7 +102035,6 @@ zürich-hotellet
 åtvaringane
 åtvaringar
 ååååja
-æ
 æddabædda
 ædet
 æir
@@ -102120,12 +102075,7 @@ zürich-hotellet
 ætten
 ættesoge
 ættesogene
-é
-éder
-éin
 élyséepalasset
-én
-én-hit
 én-mot-én-situasjoner
 én-prosentskravet
 én-singler
@@ -102133,8 +102083,6 @@ zürich-hotellet
 éndimensjonal
 érik
 étienne
-ø
-ø-gründer
 øa
 ødbehr
 ødbehrs
