@@ -8364,12 +8364,12 @@ var _user$project$Main$view = function (model) {
 														_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
 														_1: {ctor: '[]'}
 													},
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('Sett inn mellomrom'),
-														_1: {ctor: '[]'}
-													}),
-												_1: {ctor: '[]'}
+													{ctor: '[]'}),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html$text('Sett inn mellomrom'),
+													_1: {ctor: '[]'}
+												}
 											}),
 										_1: {ctor: '[]'}
 									}),
@@ -8396,12 +8396,12 @@ var _user$project$Main$view = function (model) {
 															_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
 															_1: {ctor: '[]'}
 														},
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html$text('Oppfyll tullete passordkrav'),
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
+														{ctor: '[]'}),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html$text('Oppfyll tullete passordkrav'),
+														_1: {ctor: '[]'}
+													}
 												}),
 											_1: {ctor: '[]'}
 										}),
