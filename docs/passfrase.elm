@@ -37,11 +37,15 @@ view model =
       [ label [ for "inputNumberOfWords" ] [ text "Innstillinger" ]
       , div [ class "checkbox" ]
         [ label [] 
-          [ input [ type_ "checkbox" ] [ text "Sett inn mellomrom" ] ]
+          [ input [ type_ "checkbox" ] []
+          , text "Sett inn mellomrom" 
+          ]
         ]
       , div [ class "checkbox" ]
         [ label [] 
-          [ input [ type_ "checkbox" ] [ text "Oppfyll tullete passordkrav" ] ]
+          [ input [ type_ "checkbox" ] []
+          , text "Oppfyll tullete passordkrav"
+          ]
         ]
       , div [ class "panel panel-default passphrase-panel col-md-12" ]
         [ div [ class "panel-body" ]
