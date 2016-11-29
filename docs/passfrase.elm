@@ -47,10 +47,10 @@ view model =
           , text "Oppfyll tullete passordkrav"
           ]
         ]
-      , div [ class "panel panel-default passphrase-panel col-md-12" ]
+      ]
+    , div [ class "panel panel-default passphrase-panel col-md-12" ]
         [ div [ class "panel-body" ]
           [ h1 [ class "passphrase-text" ] [ text "Banan Klatretau Viskelær Jungel ¤4" ]
           ]
         ]
-      ]
     ]

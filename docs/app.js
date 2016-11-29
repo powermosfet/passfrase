@@ -8405,48 +8405,48 @@ var _user$project$Main$view = function (model) {
 												}),
 											_1: {ctor: '[]'}
 										}),
-									_1: {
+									_1: {ctor: '[]'}
+								}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$div,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$class('panel panel-default passphrase-panel col-md-12'),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$div,
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$class('panel-body'),
+										_1: {ctor: '[]'}
+									},
+									{
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$div,
+											_elm_lang$html$Html$h1,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$class('panel panel-default passphrase-panel col-md-12'),
+												_0: _elm_lang$html$Html_Attributes$class('passphrase-text'),
 												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$div,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$class('panel-body'),
-														_1: {ctor: '[]'}
-													},
-													{
-														ctor: '::',
-														_0: A2(
-															_elm_lang$html$Html$h1,
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$class('passphrase-text'),
-																_1: {ctor: '[]'}
-															},
-															{
-																ctor: '::',
-																_0: _elm_lang$html$Html$text('Banan Klatretau Viskelær Jungel ¤4'),
-																_1: {ctor: '[]'}
-															}),
-														_1: {ctor: '[]'}
-													}),
+												_0: _elm_lang$html$Html$text('Banan Klatretau Viskelær Jungel ¤4'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}),
-					_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
 				}
 			}
 		});
