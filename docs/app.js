@@ -8453,16 +8453,44 @@ var _user$project$Main$view = function (model) {
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var _p0 = msg;
-		if (_p0.ctor === 'Increment') {
-			return model + 1;
-		} else {
-			return model - 1;
-		}
+		return model;
 	});
-var _user$project$Main$model = 0;
+var _user$project$Main$model = {
+	words: {
+		ctor: '::',
+		_0: 'a-aksjer',
+		_1: {
+			ctor: '::',
+			_0: 'a-ark',
+			_1: {
+				ctor: '::',
+				_0: 'a-beta',
+				_1: {
+					ctor: '::',
+					_0: 'a-beta-proteinet',
+					_1: {
+						ctor: '::',
+						_0: 'a-brikke',
+						_1: {
+							ctor: '::',
+							_0: 'a-dokumenter',
+							_1: {
+								ctor: '::',
+								_0: 'a-familieliv',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
 var _user$project$Main$main = _elm_lang$html$Html$beginnerProgram(
 	{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})();
+var _user$project$Main$Model = function (a) {
+	return {words: a};
+};
 var _user$project$Main$Decrement = {ctor: 'Decrement'};
 var _user$project$Main$Increment = {ctor: 'Increment'};
 
