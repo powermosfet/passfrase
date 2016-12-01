@@ -1,6 +1,6 @@
 import Html exposing (Html, h1, label, button, div, text, input)
 import Html.Attributes exposing (for, type_, id, value, class, checked)
-import Html.Events exposing (onClick)
+import Html.Events exposing (onClick, onInput)
 
 import Dictionary exposing (words)
 
@@ -25,6 +25,7 @@ model =
 -- UPDATE
 type Msg = ToggleSpaces
          | TogglePwRules
+         | ChangeNumberOfWords String
 
 update : Msg -> Model -> Model
 update msg model =
@@ -33,6 +34,13 @@ update msg model =
       { model | insertSpaces = not model.insertSpaces }
     TogglePwRules ->
       { model | satisfyPwRules = not model.satisfyPwRules }
+    ChangeNumberOfWords strN ->
+      let
+        n = case (String.toInt strN) of
+          Err _ -> 0
+          Ok x -> x
+      in
+        { model | numberOfWords = n }
 
 -- VIEW
 view : Model -> Html Msg
@@ -41,7 +49,13 @@ view model =
     [ h1 [] [ text "Passfrase" ]
     , div [ class "form-group col-md-3" ] 
       [ label [ for "inputNumberOfWords" ] [ text "Antall ord" ]
-      , input [ type_ "range", class "form-control", id "inputNumberOfWords", value (toString model.numberOfWords) ] []
+      , input 
+        [ type_ "range"
+        , class "form-control"
+        , id "inputNumberOfWords"
+        , value (toString model.numberOfWords) 
+        , onInput ChangeNumberOfWords
+        ] []
       ]
     , div [ class "form-group col-md-9" ] 
       [ label [] [ text "Innstillinger" ]

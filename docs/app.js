@@ -8905,14 +8905,27 @@ var _user$project$Main$checkbox = F3(
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
-		if (_p0.ctor === 'ToggleSpaces') {
-			return _elm_lang$core$Native_Utils.update(
-				model,
-				{insertSpaces: !model.insertSpaces});
-		} else {
-			return _elm_lang$core$Native_Utils.update(
-				model,
-				{satisfyPwRules: !model.satisfyPwRules});
+		switch (_p0.ctor) {
+			case 'ToggleSpaces':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{insertSpaces: !model.insertSpaces});
+			case 'TogglePwRules':
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{satisfyPwRules: !model.satisfyPwRules});
+			default:
+				var n = function () {
+					var _p1 = _elm_lang$core$String$toInt(_p0._0);
+					if (_p1.ctor === 'Err') {
+						return 0;
+					} else {
+						return _p1._0;
+					}
+				}();
+				return _elm_lang$core$Native_Utils.update(
+					model,
+					{numberOfWords: n});
 		}
 	});
 var _user$project$Main$model = {insertSpaces: false, satisfyPwRules: false, numberOfWords: 4, words: _user$project$Dictionary$words};
@@ -8920,6 +8933,9 @@ var _user$project$Main$Model = F4(
 	function (a, b, c, d) {
 		return {insertSpaces: a, satisfyPwRules: b, numberOfWords: c, words: d};
 	});
+var _user$project$Main$ChangeNumberOfWords = function (a) {
+	return {ctor: 'ChangeNumberOfWords', _0: a};
+};
 var _user$project$Main$TogglePwRules = {ctor: 'TogglePwRules'};
 var _user$project$Main$ToggleSpaces = {ctor: 'ToggleSpaces'};
 var _user$project$Main$view = function (model) {
@@ -8976,7 +8992,11 @@ var _user$project$Main$view = function (model) {
 												ctor: '::',
 												_0: _elm_lang$html$Html_Attributes$value(
 													_elm_lang$core$Basics$toString(model.numberOfWords)),
-												_1: {ctor: '[]'}
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$ChangeNumberOfWords),
+													_1: {ctor: '[]'}
+												}
 											}
 										}
 									}
