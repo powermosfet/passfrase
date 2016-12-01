@@ -8256,6 +8256,50 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
+var _user$project$Main$generatePassphrase = function (model) {
+	return model.insertSpaces ? 'happy gilmore' : 'happygilmore';
+};
+var _user$project$Main$checkbox = F3(
+	function (labelText, msg, value) {
+		return A2(
+			_elm_lang$html$Html$div,
+			{
+				ctor: '::',
+				_0: _elm_lang$html$Html_Attributes$class('checkbox'),
+				_1: {ctor: '[]'}
+			},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$label,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$input,
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(msg),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$html$Html_Attributes$checked(value),
+										_1: {ctor: '[]'}
+									}
+								}
+							},
+							{ctor: '[]'}),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$html$Html$text(labelText),
+							_1: {ctor: '[]'}
+						}
+					}),
+				_1: {ctor: '[]'}
+			});
+	});
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
@@ -8383,11 +8427,7 @@ var _user$project$Main$view = function (model) {
 							ctor: '::',
 							_0: A2(
 								_elm_lang$html$Html$label,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$for('inputNumberOfWords'),
-									_1: {ctor: '[]'}
-								},
+								{ctor: '[]'},
 								{
 									ctor: '::',
 									_0: _elm_lang$html$Html$text('Innstillinger'),
@@ -8395,84 +8435,10 @@ var _user$project$Main$view = function (model) {
 								}),
 							_1: {
 								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$div,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('checkbox'),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$label,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: A2(
-													_elm_lang$html$Html$input,
-													{
-														ctor: '::',
-														_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-														_1: {
-															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$ToggleSpaces),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Attributes$checked(model.insertSpaces),
-																_1: {ctor: '[]'}
-															}
-														}
-													},
-													{ctor: '[]'}),
-												_1: {
-													ctor: '::',
-													_0: _elm_lang$html$Html$text('Sett inn mellomrom'),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {ctor: '[]'}
-									}),
+								_0: A3(_user$project$Main$checkbox, 'Sett inn mellomrom', _user$project$Main$ToggleSpaces, model.insertSpaces),
 								_1: {
 									ctor: '::',
-									_0: A2(
-										_elm_lang$html$Html$div,
-										{
-											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$class('checkbox'),
-											_1: {ctor: '[]'}
-										},
-										{
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$label,
-												{ctor: '[]'},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$input,
-														{
-															ctor: '::',
-															_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-															_1: {
-																ctor: '::',
-																_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$TogglePwRules),
-																_1: {
-																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$checked(model.satisfyPwRules),
-																	_1: {ctor: '[]'}
-																}
-															}
-														},
-														{ctor: '[]'}),
-													_1: {
-														ctor: '::',
-														_0: _elm_lang$html$Html$text('Oppfyll tullete passordkrav'),
-														_1: {ctor: '[]'}
-													}
-												}),
-											_1: {ctor: '[]'}
-										}),
+									_0: A3(_user$project$Main$checkbox, 'Oppfyll tullete passordkrav', _user$project$Main$TogglePwRules, model.satisfyPwRules),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -8506,7 +8472,8 @@ var _user$project$Main$view = function (model) {
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('> Banan Klatretau Viskelær Jungel ¤4'),
+												_0: _elm_lang$html$Html$text(
+													_user$project$Main$generatePassphrase(model)),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
