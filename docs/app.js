@@ -8299,7 +8299,7 @@ var _user$project$Main$view = function (model) {
 								_elm_lang$html$Html$input,
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$type_('number'),
+									_0: _elm_lang$html$Html_Attributes$type_('range'),
 									_1: {
 										ctor: '::',
 										_0: _elm_lang$html$Html_Attributes$class('form-control'),
@@ -8438,7 +8438,7 @@ var _user$project$Main$view = function (model) {
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text('Banan Klatretau Viskelær Jungel ¤4'),
+												_0: _elm_lang$html$Html$text('> Banan Klatretau Viskelær Jungel ¤4'),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
