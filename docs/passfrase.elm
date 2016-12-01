@@ -6,23 +6,26 @@ main =
   Html.beginnerProgram { model = model, view = view, update = update }
 
 -- MODEL
-type alias Model = Int
-
+type alias Model = { words: [ String ]
+                   }
 model : Model
 model =
-  0
+  { words =
+    [ "a-aksjer"
+    , "a-ark"
+    , "a-beta"
+    , "a-beta-proteinet"
+    , "a-brikke"
+    , "a-dokumenter"
+    , "a-familieliv"
+    ]
+  }
 
 -- UPDATE
 type Msg = Increment | Decrement
 
 update : Msg -> Model -> Model
-update msg model =
-  case msg of
-    Increment ->
-      model + 1
-
-    Decrement ->
-      model - 1
+update msg model = model
 
 -- VIEW
 view : Model -> Html Msg
