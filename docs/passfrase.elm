@@ -1,16 +1,21 @@
 import Html exposing (Html, h1, label, button, div, text, input)
-import Html.Attributes exposing (for, type_, id, value, class)
+import Html.Attributes exposing (for, type_, id, value, class, checked)
 import Html.Events exposing (onClick)
 
 main =
   Html.beginnerProgram { model = model, view = view, update = update }
 
 -- MODEL
-type alias Model = { words: [ String ]
-                   }
+type alias Model = 
+  { insertSpaces : Bool
+  , satisfyPwRules : Bool
+  , words: List String
+  }
 model : Model
 model =
-  { words =
+  { insertSpaces = False
+  , satisfyPwRules = False
+  , words =
     [ "a-aksjer"
     , "a-ark"
     , "a-beta"
@@ -22,10 +27,16 @@ model =
   }
 
 -- UPDATE
-type Msg = Increment | Decrement
+type Msg = ToggleSpaces
+         | TogglePwRules
 
 update : Msg -> Model -> Model
-update msg model = model
+update msg model =
+  case msg of
+    ToggleSpaces ->
+      { model | insertSpaces = not model.insertSpaces }
+    TogglePwRules ->
+      { model | satisfyPwRules = not model.satisfyPwRules }
 
 -- VIEW
 view : Model -> Html Msg
@@ -40,13 +51,13 @@ view model =
       [ label [ for "inputNumberOfWords" ] [ text "Innstillinger" ]
       , div [ class "checkbox" ]
         [ label [] 
-          [ input [ type_ "checkbox" ] []
+          [ input [ type_ "checkbox", onClick ToggleSpaces, checked model.insertSpaces ] []
           , text "Sett inn mellomrom" 
           ]
         ]
       , div [ class "checkbox" ]
         [ label [] 
-          [ input [ type_ "checkbox" ] []
+          [ input [ type_ "checkbox", onClick TogglePwRules, checked model.satisfyPwRules ] []
           , text "Oppfyll tullete passordkrav"
           ]
         ]

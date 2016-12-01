@@ -8256,6 +8256,58 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		if (_p0.ctor === 'ToggleSpaces') {
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{insertSpaces: !model.insertSpaces});
+		} else {
+			return _elm_lang$core$Native_Utils.update(
+				model,
+				{satisfyPwRules: !model.satisfyPwRules});
+		}
+	});
+var _user$project$Main$model = {
+	insertSpaces: false,
+	satisfyPwRules: false,
+	words: {
+		ctor: '::',
+		_0: 'a-aksjer',
+		_1: {
+			ctor: '::',
+			_0: 'a-ark',
+			_1: {
+				ctor: '::',
+				_0: 'a-beta',
+				_1: {
+					ctor: '::',
+					_0: 'a-beta-proteinet',
+					_1: {
+						ctor: '::',
+						_0: 'a-brikke',
+						_1: {
+							ctor: '::',
+							_0: 'a-dokumenter',
+							_1: {
+								ctor: '::',
+								_0: 'a-familieliv',
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$Main$Model = F3(
+	function (a, b, c) {
+		return {insertSpaces: a, satisfyPwRules: b, words: c};
+	});
+var _user$project$Main$TogglePwRules = {ctor: 'TogglePwRules'};
+var _user$project$Main$ToggleSpaces = {ctor: 'ToggleSpaces'};
 var _user$project$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -8362,7 +8414,15 @@ var _user$project$Main$view = function (model) {
 													{
 														ctor: '::',
 														_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-														_1: {ctor: '[]'}
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$ToggleSpaces),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Attributes$checked(model.insertSpaces),
+																_1: {ctor: '[]'}
+															}
+														}
 													},
 													{ctor: '[]'}),
 												_1: {
@@ -8394,7 +8454,15 @@ var _user$project$Main$view = function (model) {
 														{
 															ctor: '::',
 															_0: _elm_lang$html$Html_Attributes$type_('checkbox'),
-															_1: {ctor: '[]'}
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$TogglePwRules),
+																_1: {
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$checked(model.satisfyPwRules),
+																	_1: {ctor: '[]'}
+																}
+															}
 														},
 														{ctor: '[]'}),
 													_1: {
@@ -8451,48 +8519,8 @@ var _user$project$Main$view = function (model) {
 			}
 		});
 };
-var _user$project$Main$update = F2(
-	function (msg, model) {
-		return model;
-	});
-var _user$project$Main$model = {
-	words: {
-		ctor: '::',
-		_0: 'a-aksjer',
-		_1: {
-			ctor: '::',
-			_0: 'a-ark',
-			_1: {
-				ctor: '::',
-				_0: 'a-beta',
-				_1: {
-					ctor: '::',
-					_0: 'a-beta-proteinet',
-					_1: {
-						ctor: '::',
-						_0: 'a-brikke',
-						_1: {
-							ctor: '::',
-							_0: 'a-dokumenter',
-							_1: {
-								ctor: '::',
-								_0: 'a-familieliv',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-};
 var _user$project$Main$main = _elm_lang$html$Html$beginnerProgram(
 	{model: _user$project$Main$model, view: _user$project$Main$view, update: _user$project$Main$update})();
-var _user$project$Main$Model = function (a) {
-	return {words: a};
-};
-var _user$project$Main$Decrement = {ctor: 'Decrement'};
-var _user$project$Main$Increment = {ctor: 'Increment'};
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
