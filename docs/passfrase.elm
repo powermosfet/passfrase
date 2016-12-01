@@ -1,5 +1,6 @@
 import Html exposing (Html, h1, label, button, div, text, input)
 import Html.Attributes exposing (for, type_, id, value, class, checked)
+import Html.Attributes as H exposing (min, max)
 import Html.Events exposing (onClick, onInput)
 
 import Dictionary exposing (words)
@@ -51,6 +52,8 @@ view model =
       [ label [ for "inputNumberOfWords" ] [ text "Antall ord" ]
       , input 
         [ type_ "range"
+        , H.min "1"
+        , H.max "10"
         , class "form-control"
         , id "inputNumberOfWords"
         , value (toString model.numberOfWords) 

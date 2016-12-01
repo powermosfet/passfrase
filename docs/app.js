@@ -8984,18 +8984,26 @@ var _user$project$Main$view = function (model) {
 									_0: _elm_lang$html$Html_Attributes$type_('range'),
 									_1: {
 										ctor: '::',
-										_0: _elm_lang$html$Html_Attributes$class('form-control'),
+										_0: _elm_lang$html$Html_Attributes$min('1'),
 										_1: {
 											ctor: '::',
-											_0: _elm_lang$html$Html_Attributes$id('inputNumberOfWords'),
+											_0: _elm_lang$html$Html_Attributes$max('10'),
 											_1: {
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$value(
-													_elm_lang$core$Basics$toString(model.numberOfWords)),
+												_0: _elm_lang$html$Html_Attributes$class('form-control'),
 												_1: {
 													ctor: '::',
-													_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$ChangeNumberOfWords),
-													_1: {ctor: '[]'}
+													_0: _elm_lang$html$Html_Attributes$id('inputNumberOfWords'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$value(
+															_elm_lang$core$Basics$toString(model.numberOfWords)),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$ChangeNumberOfWords),
+															_1: {ctor: '[]'}
+														}
+													}
 												}
 											}
 										}
