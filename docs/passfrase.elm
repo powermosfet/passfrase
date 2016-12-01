@@ -2,6 +2,8 @@ import Html exposing (Html, h1, label, button, div, text, input)
 import Html.Attributes exposing (for, type_, id, value, class, checked)
 import Html.Events exposing (onClick)
 
+import Dictionary exposing (words)
+
 main =
   Html.beginnerProgram { model = model, view = view, update = update }
 
@@ -9,21 +11,15 @@ main =
 type alias Model = 
   { insertSpaces : Bool
   , satisfyPwRules : Bool
+  , numberOfWords : Int
   , words: List String
   }
 model : Model
 model =
   { insertSpaces = False
   , satisfyPwRules = False
-  , words =
-    [ "a-aksjer"
-    , "a-ark"
-    , "a-beta"
-    , "a-beta-proteinet"
-    , "a-brikke"
-    , "a-dokumenter"
-    , "a-familieliv"
-    ]
+  , numberOfWords = 4
+  , words = Dictionary.words
   }
 
 -- UPDATE
@@ -45,7 +41,7 @@ view model =
     [ h1 [] [ text "Passfrase" ]
     , div [ class "form-group col-md-3" ] 
       [ label [ for "inputNumberOfWords" ] [ text "Antall ord" ]
-      , input [ type_ "range", class "form-control", id "inputNumberOfWords", value "4" ] []
+      , input [ type_ "range", class "form-control", id "inputNumberOfWords", value (toString model.numberOfWords) ] []
       ]
     , div [ class "form-group col-md-9" ] 
       [ label [] [ text "Innstillinger" ]
@@ -68,9 +64,31 @@ checkbox labelText msg value =
       ]
     ]
 
+capitalize : String -> String
+capitalize str =
+  let
+    c = String.left 1 str
+    
+    cs = String.dropLeft 1 str
+  in
+    String.toUpper c ++ cs
+
+generatePassphraseList : Model -> List String
+generatePassphraseList model =
+  List.take model.numberOfWords model.words
+
 generatePassphrase : Model -> String
 generatePassphrase model =
-  if model.insertSpaces
-  then "happy gilmore"
-  else "happygilmore"
+  let
+    passPhraseList =
+      if model.satisfyPwRules
+      then List.map capitalize (generatePassphraseList model)
+      else (generatePassphraseList model)
+
+    sep =
+      if model.insertSpaces
+      then " "
+      else ""
+  in
+    String.join sep passPhraseList
                           

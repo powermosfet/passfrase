@@ -8256,8 +8256,610 @@ var _elm_lang$html$Html_Events$Options = F2(
 		return {stopPropagation: a, preventDefault: b};
 	});
 
+var _user$project$Dictionary$words = {
+	ctor: '::',
+	_0: 'a-aksjer',
+	_1: {
+		ctor: '::',
+		_0: 'a-ark',
+		_1: {
+			ctor: '::',
+			_0: 'a-beta',
+			_1: {
+				ctor: '::',
+				_0: 'a-beta-proteinet',
+				_1: {
+					ctor: '::',
+					_0: 'a-brikke',
+					_1: {
+						ctor: '::',
+						_0: 'a-dokumenter',
+						_1: {
+							ctor: '::',
+							_0: 'a-familieliv',
+							_1: {
+								ctor: '::',
+								_0: 'a-finalen',
+								_1: {
+									ctor: '::',
+									_0: 'a-ha',
+									_1: {
+										ctor: '::',
+										_0: 'a-ha-konsert',
+										_1: {
+											ctor: '::',
+											_0: 'a-ha-konserter',
+											_1: {
+												ctor: '::',
+												_0: 'a-has',
+												_1: {
+													ctor: '::',
+													_0: 'a-hus',
+													_1: {
+														ctor: '::',
+														_0: 'a-lag',
+														_1: {
+															ctor: '::',
+															_0: 'a-laget',
+															_1: {
+																ctor: '::',
+																_0: 'a-lagets',
+																_1: {
+																	ctor: '::',
+																	_0: 'a-lagskamper',
+																	_1: {
+																		ctor: '::',
+																		_0: 'a-lagssluttspill',
+																		_1: {
+																			ctor: '::',
+																			_0: 'a-lagsspillere',
+																			_1: {
+																				ctor: '::',
+																				_0: 'a-lagstropp',
+																				_1: {
+																					ctor: '::',
+																					_0: 'a-lagstroppen',
+																					_1: {
+																						ctor: '::',
+																						_0: 'a-land',
+																						_1: {
+																							ctor: '::',
+																							_0: 'a-landskamper',
+																							_1: {
+																								ctor: '::',
+																								_0: 'a-landslaget',
+																								_1: {
+																									ctor: '::',
+																									_0: 'a-landslagsnivå',
+																									_1: {
+																										ctor: '::',
+																										_0: 'a-landslagssamling',
+																										_1: {
+																											ctor: '::',
+																											_0: 'a-liv',
+																											_1: {
+																												ctor: '::',
+																												_0: 'a-livet',
+																												_1: {
+																													ctor: '::',
+																													_0: 'a-løsning',
+																													_1: {
+																														ctor: '::',
+																														_0: 'a-plattformen',
+																														_1: {
+																															ctor: '::',
+																															_0: 'a-poeng',
+																															_1: {
+																																ctor: '::',
+																																_0: 'a-postens',
+																																_1: {
+																																	ctor: '::',
+																																	_0: 'a-stallen',
+																																	_1: {
+																																		ctor: '::',
+																																		_0: 'a-varsel',
+																																		_1: {
+																																			ctor: '::',
+																																			_0: 'a-varselet',
+																																			_1: {
+																																				ctor: '::',
+																																				_0: 'a-vitamin',
+																																				_1: {
+																																					ctor: '::',
+																																					_0: 'aabakken',
+																																					_1: {
+																																						ctor: '::',
+																																						_0: 'aabenraa',
+																																						_1: {
+																																							ctor: '::',
+																																							_0: 'aaberge',
+																																							_1: {
+																																								ctor: '::',
+																																								_0: 'aachen',
+																																								_1: {
+																																									ctor: '::',
+																																									_0: 'aadhil',
+																																									_1: {
+																																										ctor: '::',
+																																										_0: 'aadne',
+																																										_1: {
+																																											ctor: '::',
+																																											_0: 'aafk',
+																																											_1: {
+																																												ctor: '::',
+																																												_0: 'aafk-trener',
+																																												_1: {
+																																													ctor: '::',
+																																													_0: 'aafks',
+																																													_1: {
+																																														ctor: '::',
+																																														_0: 'aagaard',
+																																														_1: {
+																																															ctor: '::',
+																																															_0: 'aage',
+																																															_1: {
+																																																ctor: '::',
+																																																_0: 'aagesen',
+																																																_1: {
+																																																	ctor: '::',
+																																																	_0: 'aagre',
+																																																	_1: {
+																																																		ctor: '::',
+																																																		_0: 'aakre',
+																																																		_1: {
+																																																			ctor: '::',
+																																																			_0: 'aalberg',
+																																																			_1: {
+																																																				ctor: '::',
+																																																				_0: 'aalbu',
+																																																				_1: {
+																																																					ctor: '::',
+																																																					_0: 'aalbæk',
+																																																					_1: {
+																																																						ctor: '::',
+																																																						_0: 'aalen',
+																																																						_1: {
+																																																							ctor: '::',
+																																																							_0: 'aalesund',
+																																																							_1: {
+																																																								ctor: '::',
+																																																								_0: 'aalesund-trener',
+																																																								_1: {
+																																																									ctor: '::',
+																																																									_0: 'aaltvedt',
+																																																									_1: {
+																																																										ctor: '::',
+																																																										_0: 'aalvik',
+																																																										_1: {
+																																																											ctor: '::',
+																																																											_0: 'aaløkken',
+																																																											_1: {
+																																																												ctor: '::',
+																																																												_0: 'aamdal',
+																																																												_1: {
+																																																													ctor: '::',
+																																																													_0: 'aamlid',
+																																																													_1: {
+																																																														ctor: '::',
+																																																														_0: 'aamodt',
+																																																														_1: {
+																																																															ctor: '::',
+																																																															_0: 'aamoth',
+																																																															_1: {
+																																																																ctor: '::',
+																																																																_0: 'aanderaa',
+																																																																_1: {
+																																																																	ctor: '::',
+																																																																	_0: 'aanensen',
+																																																																	_1: {
+																																																																		ctor: '::',
+																																																																		_0: 'aanes',
+																																																																		_1: {
+																																																																			ctor: '::',
+																																																																			_0: 'aap-ordning',
+																																																																			_1: {
+																																																																				ctor: '::',
+																																																																				_0: 'aarag',
+																																																																				_1: {
+																																																																					ctor: '::',
+																																																																					_0: 'aarbakke',
+																																																																					_1: {
+																																																																						ctor: '::',
+																																																																						_0: 'aardal',
+																																																																						_1: {
+																																																																							ctor: '::',
+																																																																							_0: 'aardals',
+																																																																							_1: {
+																																																																								ctor: '::',
+																																																																								_0: 'aarebrot',
+																																																																								_1: {
+																																																																									ctor: '::',
+																																																																									_0: 'aarebrotgeografi',
+																																																																									_1: {
+																																																																										ctor: '::',
+																																																																										_0: 'aarebrots',
+																																																																										_1: {
+																																																																											ctor: '::',
+																																																																											_0: 'aarhus',
+																																																																											_1: {
+																																																																												ctor: '::',
+																																																																												_0: 'aarlie',
+																																																																												_1: {
+																																																																													ctor: '::',
+																																																																													_0: 'aarnes',
+																																																																													_1: {
+																																																																														ctor: '::',
+																																																																														_0: 'aaron',
+																																																																														_1: {
+																																																																															ctor: '::',
+																																																																															_0: 'aarrestad',
+																																																																															_1: {
+																																																																																ctor: '::',
+																																																																																_0: 'aars',
+																																																																																_1: {
+																																																																																	ctor: '::',
+																																																																																	_0: 'aarset',
+																																																																																	_1: {
+																																																																																		ctor: '::',
+																																																																																		_0: 'aarseth',
+																																																																																		_1: {
+																																																																																			ctor: '::',
+																																																																																			_0: 'aarskog',
+																																																																																			_1: {
+																																																																																				ctor: '::',
+																																																																																				_0: 'aarstein',
+																																																																																				_1: {
+																																																																																					ctor: '::',
+																																																																																					_0: 'aarsvold',
+																																																																																					_1: {
+																																																																																						ctor: '::',
+																																																																																						_0: 'aartun',
+																																																																																						_1: {
+																																																																																							ctor: '::',
+																																																																																							_0: 'aarvold',
+																																																																																							_1: {
+																																																																																								ctor: '::',
+																																																																																								_0: 'aarvoll',
+																																																																																								_1: {
+																																																																																									ctor: '::',
+																																																																																									_0: 'aarø',
+																																																																																									_1: {
+																																																																																										ctor: '::',
+																																																																																										_0: 'aarøy',
+																																																																																										_1: {
+																																																																																											ctor: '::',
+																																																																																											_0: 'aas',
+																																																																																											_1: {
+																																																																																												ctor: '::',
+																																																																																												_0: 'aasaaren',
+																																																																																												_1: {
+																																																																																													ctor: '::',
+																																																																																													_0: 'aasbak',
+																																																																																													_1: {
+																																																																																														ctor: '::',
+																																																																																														_0: 'aasbø',
+																																																																																														_1: {
+																																																																																															ctor: '::',
+																																																																																															_0: 'aasdalen',
+																																																																																															_1: {
+																																																																																																ctor: '::',
+																																																																																																_0: 'aase',
+																																																																																																_1: {
+																																																																																																	ctor: '::',
+																																																																																																	_0: 'aasen',
+																																																																																																	_1: {
+																																																																																																		ctor: '::',
+																																																																																																		_0: 'aasen-feltet',
+																																																																																																		_1: {
+																																																																																																			ctor: '::',
+																																																																																																			_0: 'aaser',
+																																																																																																			_1: {
+																																																																																																				ctor: '::',
+																																																																																																				_0: 'aaserud',
+																																																																																																				_1: {
+																																																																																																					ctor: '::',
+																																																																																																					_0: 'aases',
+																																																																																																					_1: {
+																																																																																																						ctor: '::',
+																																																																																																						_0: 'aasheim',
+																																																																																																						_1: {
+																																																																																																							ctor: '::',
+																																																																																																							_0: 'aaskov',
+																																																																																																							_1: {
+																																																																																																								ctor: '::',
+																																																																																																								_0: 'aaslund',
+																																																																																																								_1: {
+																																																																																																									ctor: '::',
+																																																																																																									_0: 'aasmul',
+																																																																																																									_1: {
+																																																																																																										ctor: '::',
+																																																																																																										_0: 'aasmund',
+																																																																																																										_1: {
+																																																																																																											ctor: '::',
+																																																																																																											_0: 'aasnes',
+																																																																																																											_1: {
+																																																																																																												ctor: '::',
+																																																																																																												_0: 'aass',
+																																																																																																												_1: {
+																																																																																																													ctor: '::',
+																																																																																																													_0: 'aastad',
+																																																																																																													_1: {
+																																																																																																														ctor: '::',
+																																																																																																														_0: 'aasvang',
+																																																																																																														_1: {
+																																																																																																															ctor: '::',
+																																																																																																															_0: 'aavatsmark',
+																																																																																																															_1: {
+																																																																																																																ctor: '::',
+																																																																																																																_0: 'abab',
+																																																																																																																_1: {
+																																																																																																																	ctor: '::',
+																																																																																																																	_0: 'abadi',
+																																																																																																																	_1: {
+																																																																																																																		ctor: '::',
+																																																																																																																		_0: 'abadis',
+																																																																																																																		_1: {
+																																																																																																																			ctor: '::',
+																																																																																																																			_0: 'abassi',
+																																																																																																																			_1: {
+																																																																																																																				ctor: '::',
+																																																																																																																				_0: 'abb',
+																																																																																																																				_1: {
+																																																																																																																					ctor: '::',
+																																																																																																																					_0: 'abba-gutta',
+																																																																																																																					_1: {
+																																																																																																																						ctor: '::',
+																																																																																																																						_0: 'abbas',
+																																																																																																																						_1: {
+																																																																																																																							ctor: '::',
+																																																																																																																							_0: 'abbasi',
+																																																																																																																							_1: {
+																																																																																																																								ctor: '::',
+																																																																																																																								_0: 'abbe',
+																																																																																																																								_1: {
+																																																																																																																									ctor: '::',
+																																																																																																																									_0: 'abbe-begrensninga',
+																																																																																																																									_1: {
+																																																																																																																										ctor: '::',
+																																																																																																																										_0: 'abbe-grensa',
+																																																																																																																										_1: {
+																																																																																																																											ctor: '::',
+																																																																																																																											_0: 'abbey',
+																																																																																																																											_1: {
+																																																																																																																												ctor: '::',
+																																																																																																																												_0: 'abbey-hus',
+																																																																																																																												_1: {
+																																																																																																																													ctor: '::',
+																																																																																																																													_0: 'abbey-premieren',
+																																																																																																																													_1: {
+																																																																																																																														ctor: '::',
+																																																																																																																														_0: 'abbey-settet',
+																																																																																																																														_1: {
+																																																																																																																															ctor: '::',
+																																																																																																																															_0: 'abbeys',
+																																																																																																																															_1: {
+																																																																																																																																ctor: '::',
+																																																																																																																																_0: 'abbonnementet',
+																																																																																																																																_1: {
+																																																																																																																																	ctor: '::',
+																																																																																																																																	_0: 'abbott',
+																																																																																																																																	_1: {
+																																																																																																																																		ctor: '::',
+																																																																																																																																		_0: 'abc',
+																																																																																																																																		_1: {
+																																																																																																																																			ctor: '::',
+																																																																																																																																			_0: 'abcs',
+																																																																																																																																			_1: {
+																																																																																																																																				ctor: '::',
+																																																																																																																																				_0: 'abd',
+																																																																																																																																				_1: {
+																																																																																																																																					ctor: '::',
+																																																																																																																																					_0: 'abd-rabbu',
+																																																																																																																																					_1: {
+																																																																																																																																						ctor: '::',
+																																																																																																																																						_0: 'abdel',
+																																																																																																																																						_1: {
+																																																																																																																																							ctor: '::',
+																																																																																																																																							_0: 'abdelbakhi',
+																																																																																																																																							_1: {
+																																																																																																																																								ctor: '::',
+																																																																																																																																								_0: 'abdelilah',
+																																																																																																																																								_1: {
+																																																																																																																																									ctor: '::',
+																																																																																																																																									_0: 'abdellaoue',
+																																																																																																																																									_1: {
+																																																																																																																																										ctor: '::',
+																																																																																																																																										_0: 'abdennour',
+																																																																																																																																										_1: {
+																																																																																																																																											ctor: '::',
+																																																																																																																																											_0: 'abdessattar',
+																																																																																																																																											_1: {
+																																																																																																																																												ctor: '::',
+																																																																																																																																												_0: 'abdikarin',
+																																																																																																																																												_1: {
+																																																																																																																																													ctor: '::',
+																																																																																																																																													_0: 'abdikasjon',
+																																																																																																																																													_1: {
+																																																																																																																																														ctor: '::',
+																																																																																																																																														_0: 'abdikhader',
+																																																																																																																																														_1: {
+																																																																																																																																															ctor: '::',
+																																																																																																																																															_0: 'abdille',
+																																																																																																																																															_1: {
+																																																																																																																																																ctor: '::',
+																																																																																																																																																_0: 'abdisere',
+																																																																																																																																																_1: {
+																																																																																																																																																	ctor: '::',
+																																																																																																																																																	_0: 'abdisert',
+																																																																																																																																																	_1: {
+																																																																																																																																																		ctor: '::',
+																																																																																																																																																		_0: 'abdul',
+																																																																																																																																																		_1: {ctor: '[]'}
+																																																																																																																																																	}
+																																																																																																																																																}
+																																																																																																																																															}
+																																																																																																																																														}
+																																																																																																																																													}
+																																																																																																																																												}
+																																																																																																																																											}
+																																																																																																																																										}
+																																																																																																																																									}
+																																																																																																																																								}
+																																																																																																																																							}
+																																																																																																																																						}
+																																																																																																																																					}
+																																																																																																																																				}
+																																																																																																																																			}
+																																																																																																																																		}
+																																																																																																																																	}
+																																																																																																																																}
+																																																																																																																															}
+																																																																																																																														}
+																																																																																																																													}
+																																																																																																																												}
+																																																																																																																											}
+																																																																																																																										}
+																																																																																																																									}
+																																																																																																																								}
+																																																																																																																							}
+																																																																																																																						}
+																																																																																																																					}
+																																																																																																																				}
+																																																																																																																			}
+																																																																																																																		}
+																																																																																																																	}
+																																																																																																																}
+																																																																																																															}
+																																																																																																														}
+																																																																																																													}
+																																																																																																												}
+																																																																																																											}
+																																																																																																										}
+																																																																																																									}
+																																																																																																								}
+																																																																																																							}
+																																																																																																						}
+																																																																																																					}
+																																																																																																				}
+																																																																																																			}
+																																																																																																		}
+																																																																																																	}
+																																																																																																}
+																																																																																															}
+																																																																																														}
+																																																																																													}
+																																																																																												}
+																																																																																											}
+																																																																																										}
+																																																																																									}
+																																																																																								}
+																																																																																							}
+																																																																																						}
+																																																																																					}
+																																																																																				}
+																																																																																			}
+																																																																																		}
+																																																																																	}
+																																																																																}
+																																																																															}
+																																																																														}
+																																																																													}
+																																																																												}
+																																																																											}
+																																																																										}
+																																																																									}
+																																																																								}
+																																																																							}
+																																																																						}
+																																																																					}
+																																																																				}
+																																																																			}
+																																																																		}
+																																																																	}
+																																																																}
+																																																															}
+																																																														}
+																																																													}
+																																																												}
+																																																											}
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+
+var _user$project$Main$generatePassphraseList = function (model) {
+	return A2(_elm_lang$core$List$take, model.numberOfWords, model.words);
+};
+var _user$project$Main$capitalize = function (str) {
+	var cs = A2(_elm_lang$core$String$dropLeft, 1, str);
+	var c = A2(_elm_lang$core$String$left, 1, str);
+	return A2(
+		_elm_lang$core$Basics_ops['++'],
+		_elm_lang$core$String$toUpper(c),
+		cs);
+};
 var _user$project$Main$generatePassphrase = function (model) {
-	return model.insertSpaces ? 'happy gilmore' : 'happygilmore';
+	var sep = model.insertSpaces ? ' ' : '';
+	var passPhraseList = model.satisfyPwRules ? A2(
+		_elm_lang$core$List$map,
+		_user$project$Main$capitalize,
+		_user$project$Main$generatePassphraseList(model)) : _user$project$Main$generatePassphraseList(model);
+	return A2(_elm_lang$core$String$join, sep, passPhraseList);
 };
 var _user$project$Main$checkbox = F3(
 	function (labelText, msg, value) {
@@ -8313,42 +8915,10 @@ var _user$project$Main$update = F2(
 				{satisfyPwRules: !model.satisfyPwRules});
 		}
 	});
-var _user$project$Main$model = {
-	insertSpaces: false,
-	satisfyPwRules: false,
-	words: {
-		ctor: '::',
-		_0: 'a-aksjer',
-		_1: {
-			ctor: '::',
-			_0: 'a-ark',
-			_1: {
-				ctor: '::',
-				_0: 'a-beta',
-				_1: {
-					ctor: '::',
-					_0: 'a-beta-proteinet',
-					_1: {
-						ctor: '::',
-						_0: 'a-brikke',
-						_1: {
-							ctor: '::',
-							_0: 'a-dokumenter',
-							_1: {
-								ctor: '::',
-								_0: 'a-familieliv',
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-};
-var _user$project$Main$Model = F3(
-	function (a, b, c) {
-		return {insertSpaces: a, satisfyPwRules: b, words: c};
+var _user$project$Main$model = {insertSpaces: false, satisfyPwRules: false, numberOfWords: 4, words: _user$project$Dictionary$words};
+var _user$project$Main$Model = F4(
+	function (a, b, c, d) {
+		return {insertSpaces: a, satisfyPwRules: b, numberOfWords: c, words: d};
 	});
 var _user$project$Main$TogglePwRules = {ctor: 'TogglePwRules'};
 var _user$project$Main$ToggleSpaces = {ctor: 'ToggleSpaces'};
@@ -8404,7 +8974,8 @@ var _user$project$Main$view = function (model) {
 											_0: _elm_lang$html$Html_Attributes$id('inputNumberOfWords'),
 											_1: {
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$value('4'),
+												_0: _elm_lang$html$Html_Attributes$value(
+													_elm_lang$core$Basics$toString(model.numberOfWords)),
 												_1: {ctor: '[]'}
 											}
 										}
