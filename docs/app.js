@@ -9818,7 +9818,7 @@ var _user$project$Main$view = function (model) {
 					_elm_lang$html$Html$div,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$class('form-group col-md-3'),
+						_0: _elm_lang$html$Html_Attributes$class('form-group col-md-6'),
 						_1: {ctor: '[]'}
 					},
 					{
@@ -9879,7 +9879,7 @@ var _user$project$Main$view = function (model) {
 						_elm_lang$html$Html$div,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$class('form-group col-md-9'),
+							_0: _elm_lang$html$Html_Attributes$class('form-group col-md-6'),
 							_1: {ctor: '[]'}
 						},
 						{

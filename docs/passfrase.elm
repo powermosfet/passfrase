@@ -64,7 +64,7 @@ view : Model -> Html Msg
 view model = 
   div []
     [ h1 [] [ text "Passfrase" ]
-    , div [ class "form-group col-md-3" ] 
+    , div [ class "form-group col-md-6" ] 
       [ label [ for "inputNumberOfWords" ] [ text "Antall ord" ]
       , input 
         [ type_ "range"
@@ -76,7 +76,7 @@ view model =
         , onInput ChangeNumberOfWords
         ] []
       ]
-    , div [ class "form-group col-md-9" ] 
+    , div [ class "form-group col-md-6" ] 
       [ label [] [ text "Innstillinger" ]
       , checkbox "Sett inn mellomrom" ToggleSpaces model.insertSpaces
       , checkbox "Oppfyll tullete passordkrav" TogglePwRules model.satisfyPwRules 
