@@ -9717,7 +9717,23 @@ var _user$project$Main$init = {
 		insertSpaces: true,
 		satisfyPwRules: false,
 		numberOfWords: 4,
-		passphraseIndexes: {ctor: '[]'},
+		passphraseIndexes: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {
+						ctor: '::',
+						_0: 3,
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		},
 		words: _user$project$Dictionary$words
 	},
 	_1: _elm_lang$core$Platform_Cmd$none
