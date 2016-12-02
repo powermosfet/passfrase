@@ -9408,25 +9408,117 @@ var _elm_lang$http$Http$StringPart = F2(
 	});
 var _elm_lang$http$Http$stringPart = _elm_lang$http$Http$StringPart;
 
-var _user$project$Main$get = F2(
+var _user$project$Message$NewPassphrase = {ctor: 'NewPassphrase'};
+var _user$project$Message$NewWords = function (a) {
+	return {ctor: 'NewWords', _0: a};
+};
+var _user$project$Message$NewIndexes = function (a) {
+	return {ctor: 'NewIndexes', _0: a};
+};
+var _user$project$Message$ChangeNumberOfWords = function (a) {
+	return {ctor: 'ChangeNumberOfWords', _0: a};
+};
+var _user$project$Message$TogglePwRules = {ctor: 'TogglePwRules'};
+var _user$project$Message$ToggleSpaces = {ctor: 'ToggleSpaces'};
+
+var _user$project$GetWords$parseWords = _elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string);
+var _user$project$GetWords$getWords = A2(
+	_elm_lang$http$Http$send,
+	_user$project$Message$NewWords,
+	A2(_elm_lang$http$Http$get, 'nrk.json', _user$project$GetWords$parseWords));
+
+var _user$project$Model$init = {
+	ctor: '_Tuple2',
+	_0: {
+		insertSpaces: true,
+		satisfyPwRules: false,
+		numberOfWords: 4,
+		passphraseIndexes: {ctor: '[]'},
+		words: {ctor: '[]'}
+	},
+	_1: _user$project$GetWords$getWords
+};
+var _user$project$Model$Model = F5(
+	function (a, b, c, d, e) {
+		return {insertSpaces: a, satisfyPwRules: b, numberOfWords: c, passphraseIndexes: d, words: e};
+	});
+
+var _user$project$Update$generateIndexes = function (model) {
+	var maxIndex = _elm_lang$core$List$length(model.words) - 1;
+	return {
+		ctor: '_Tuple2',
+		_0: model,
+		_1: A2(
+			_elm_lang$core$Random$generate,
+			_user$project$Message$NewIndexes,
+			A2(
+				_elm_lang$core$Random$list,
+				model.numberOfWords,
+				A2(_elm_lang$core$Random$int, 0, maxIndex)))
+	};
+};
+var _user$project$Update$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'ToggleSpaces':
+				return _user$project$Update$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{insertSpaces: !model.insertSpaces}));
+			case 'TogglePwRules':
+				return _user$project$Update$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{satisfyPwRules: !model.satisfyPwRules}));
+			case 'ChangeNumberOfWords':
+				var n = function () {
+					var _p1 = _elm_lang$core$String$toInt(_p0._0);
+					if (_p1.ctor === 'Err') {
+						return 0;
+					} else {
+						return _p1._0;
+					}
+				}();
+				return _user$project$Update$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{numberOfWords: n}));
+			case 'NewIndexes':
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{passphraseIndexes: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			case 'NewWords':
+				if (_p0._0.ctor === 'Err') {
+					return {ctor: '_Tuple2', _0: model, _1: _user$project$GetWords$getWords};
+				} else {
+					return _user$project$Update$generateIndexes(
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{words: _p0._0._0}));
+				}
+			default:
+				return _user$project$Update$generateIndexes(model);
+		}
+	});
+
+var _user$project$Passphrase$get = F2(
 	function (xs, n) {
 		return _elm_lang$core$List$head(
 			A2(_elm_lang$core$List$drop, n, xs));
 	});
-var _user$project$Main$strGet = F2(
+var _user$project$Passphrase$strGet = F2(
 	function (cs, n) {
 		return A2(
 			_elm_lang$core$Maybe$withDefault,
 			'',
-			A2(_user$project$Main$get, cs, n));
+			A2(_user$project$Passphrase$get, cs, n));
 	});
-var _user$project$Main$generatePassphraseList = function (model) {
-	return A2(
-		_elm_lang$core$List$map,
-		_user$project$Main$strGet(model.words),
-		model.passphraseIndexes);
-};
-var _user$project$Main$capitalize = function (str) {
+var _user$project$Passphrase$capitalize = function (str) {
 	var cs = A2(_elm_lang$core$String$dropLeft, 1, str);
 	var c = A2(_elm_lang$core$String$left, 1, str);
 	return A2(
@@ -9434,25 +9526,29 @@ var _user$project$Main$capitalize = function (str) {
 		_elm_lang$core$String$toUpper(c),
 		cs);
 };
-var _user$project$Main$generatePassphrase = function (model) {
+var _user$project$Passphrase$generatePassphraseList = function (model) {
+	return A2(
+		_elm_lang$core$List$map,
+		_user$project$Passphrase$strGet(model.words),
+		model.passphraseIndexes);
+};
+var _user$project$Passphrase$generatePassphrase = function (model) {
 	var sep = model.insertSpaces ? ' ' : '';
 	var passPhraseList = model.satisfyPwRules ? A2(
 		_elm_lang$core$List$map,
-		_user$project$Main$capitalize,
+		_user$project$Passphrase$capitalize,
 		A2(
 			_elm_lang$core$Basics_ops['++'],
-			_user$project$Main$generatePassphraseList(model),
+			_user$project$Passphrase$generatePassphraseList(model),
 			{
 				ctor: '::',
 				_0: '%5',
 				_1: {ctor: '[]'}
-			})) : _user$project$Main$generatePassphraseList(model);
+			})) : _user$project$Passphrase$generatePassphraseList(model);
 	return A2(_elm_lang$core$String$join, sep, passPhraseList);
 };
-var _user$project$Main$subscriptions = function (model) {
-	return _elm_lang$core$Platform_Sub$none;
-};
-var _user$project$Main$checkbox = F3(
+
+var _user$project$View$checkbox = F3(
 	function (labelText, msg, value) {
 		return A2(
 			_elm_lang$html$Html$div,
@@ -9493,101 +9589,7 @@ var _user$project$Main$checkbox = F3(
 				_1: {ctor: '[]'}
 			});
 	});
-var _user$project$Main$parseWords = _elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string);
-var _user$project$Main$Model = F5(
-	function (a, b, c, d, e) {
-		return {insertSpaces: a, satisfyPwRules: b, numberOfWords: c, passphraseIndexes: d, words: e};
-	});
-var _user$project$Main$NewPassphrase = {ctor: 'NewPassphrase'};
-var _user$project$Main$NewWords = function (a) {
-	return {ctor: 'NewWords', _0: a};
-};
-var _user$project$Main$getWords = A2(
-	_elm_lang$http$Http$send,
-	_user$project$Main$NewWords,
-	A2(_elm_lang$http$Http$get, 'nrk.json', _user$project$Main$parseWords));
-var _user$project$Main$init = {
-	ctor: '_Tuple2',
-	_0: {
-		insertSpaces: true,
-		satisfyPwRules: false,
-		numberOfWords: 4,
-		passphraseIndexes: {ctor: '[]'},
-		words: {ctor: '[]'}
-	},
-	_1: _user$project$Main$getWords
-};
-var _user$project$Main$NewIndexes = function (a) {
-	return {ctor: 'NewIndexes', _0: a};
-};
-var _user$project$Main$generateIndexes = function (model) {
-	var maxIndex = _elm_lang$core$List$length(model.words) - 1;
-	return {
-		ctor: '_Tuple2',
-		_0: model,
-		_1: A2(
-			_elm_lang$core$Random$generate,
-			_user$project$Main$NewIndexes,
-			A2(
-				_elm_lang$core$Random$list,
-				model.numberOfWords,
-				A2(_elm_lang$core$Random$int, 0, maxIndex)))
-	};
-};
-var _user$project$Main$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'ToggleSpaces':
-				return _user$project$Main$generateIndexes(
-					_elm_lang$core$Native_Utils.update(
-						model,
-						{insertSpaces: !model.insertSpaces}));
-			case 'TogglePwRules':
-				return _user$project$Main$generateIndexes(
-					_elm_lang$core$Native_Utils.update(
-						model,
-						{satisfyPwRules: !model.satisfyPwRules}));
-			case 'ChangeNumberOfWords':
-				var n = function () {
-					var _p1 = _elm_lang$core$String$toInt(_p0._0);
-					if (_p1.ctor === 'Err') {
-						return 0;
-					} else {
-						return _p1._0;
-					}
-				}();
-				return _user$project$Main$generateIndexes(
-					_elm_lang$core$Native_Utils.update(
-						model,
-						{numberOfWords: n}));
-			case 'NewIndexes':
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{passphraseIndexes: _p0._0}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
-			case 'NewWords':
-				if (_p0._0.ctor === 'Err') {
-					return {ctor: '_Tuple2', _0: model, _1: _user$project$Main$getWords};
-				} else {
-					return _user$project$Main$generateIndexes(
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{words: _p0._0._0}));
-				}
-			default:
-				return _user$project$Main$generateIndexes(model);
-		}
-	});
-var _user$project$Main$ChangeNumberOfWords = function (a) {
-	return {ctor: 'ChangeNumberOfWords', _0: a};
-};
-var _user$project$Main$TogglePwRules = {ctor: 'TogglePwRules'};
-var _user$project$Main$ToggleSpaces = {ctor: 'ToggleSpaces'};
-var _user$project$Main$view = function (model) {
+var _user$project$View$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
@@ -9649,7 +9651,7 @@ var _user$project$Main$view = function (model) {
 															_elm_lang$core$Basics$toString(model.numberOfWords)),
 														_1: {
 															ctor: '::',
-															_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$ChangeNumberOfWords),
+															_0: _elm_lang$html$Html_Events$onInput(_user$project$Message$ChangeNumberOfWords),
 															_1: {ctor: '[]'}
 														}
 													}
@@ -9683,10 +9685,10 @@ var _user$project$Main$view = function (model) {
 								}),
 							_1: {
 								ctor: '::',
-								_0: A3(_user$project$Main$checkbox, 'Sett inn mellomrom', _user$project$Main$ToggleSpaces, model.insertSpaces),
+								_0: A3(_user$project$View$checkbox, 'Sett inn mellomrom', _user$project$Message$ToggleSpaces, model.insertSpaces),
 								_1: {
 									ctor: '::',
-									_0: A3(_user$project$Main$checkbox, 'Oppfyll tullete passordkrav', _user$project$Main$TogglePwRules, model.satisfyPwRules),
+									_0: A3(_user$project$View$checkbox, 'Oppfyll tullete passordkrav', _user$project$Message$TogglePwRules, model.satisfyPwRules),
 									_1: {ctor: '[]'}
 								}
 							}
@@ -9700,7 +9702,7 @@ var _user$project$Main$view = function (model) {
 								_0: _elm_lang$html$Html_Attributes$class('panel panel-default passphrase-panel col-md-12'),
 								_1: {
 									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$NewPassphrase),
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Message$NewPassphrase),
 									_1: {ctor: '[]'}
 								}
 							},
@@ -9725,7 +9727,7 @@ var _user$project$Main$view = function (model) {
 											{
 												ctor: '::',
 												_0: _elm_lang$html$Html$text(
-													_user$project$Main$generatePassphrase(model)),
+													_user$project$Passphrase$generatePassphrase(model)),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -9738,8 +9740,12 @@ var _user$project$Main$view = function (model) {
 			}
 		});
 };
+
+var _user$project$Main$subscriptions = function (model) {
+	return _elm_lang$core$Platform_Sub$none;
+};
 var _user$project$Main$main = _elm_lang$html$Html$program(
-	{init: _user$project$Main$init, view: _user$project$Main$view, update: _user$project$Main$update, subscriptions: _user$project$Main$subscriptions})();
+	{init: _user$project$Model$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};
