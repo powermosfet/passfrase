@@ -20,14 +20,13 @@ type alias Model =
 
 init : (Model, Cmd Msg)
 init =
-  ( { insertSpaces = True
+  generateIndexes 
+    { insertSpaces = True
     , satisfyPwRules = False
     , numberOfWords = 4
     , passphraseIndexes = [ 0, 1, 2, 3 ]
     , words = Dictionary.words
     }
-  , Cmd.none
-  )
 
 -- UPDATE
 type Msg = ToggleSpaces

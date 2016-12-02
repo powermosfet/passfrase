@@ -9711,33 +9711,6 @@ var _user$project$Main$checkbox = F3(
 				_1: {ctor: '[]'}
 			});
 	});
-var _user$project$Main$init = {
-	ctor: '_Tuple2',
-	_0: {
-		insertSpaces: true,
-		satisfyPwRules: false,
-		numberOfWords: 4,
-		passphraseIndexes: {
-			ctor: '::',
-			_0: 0,
-			_1: {
-				ctor: '::',
-				_0: 1,
-				_1: {
-					ctor: '::',
-					_0: 2,
-					_1: {
-						ctor: '::',
-						_0: 3,
-						_1: {ctor: '[]'}
-					}
-				}
-			}
-		},
-		words: _user$project$Dictionary$words
-	},
-	_1: _elm_lang$core$Platform_Cmd$none
-};
 var _user$project$Main$Model = F5(
 	function (a, b, c, d, e) {
 		return {insertSpaces: a, satisfyPwRules: b, numberOfWords: c, passphraseIndexes: d, words: e};
@@ -9759,6 +9732,30 @@ var _user$project$Main$generateIndexes = function (model) {
 				A2(_elm_lang$core$Random$int, 0, maxIndex)))
 	};
 };
+var _user$project$Main$init = _user$project$Main$generateIndexes(
+	{
+		insertSpaces: true,
+		satisfyPwRules: false,
+		numberOfWords: 4,
+		passphraseIndexes: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {
+						ctor: '::',
+						_0: 3,
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		},
+		words: _user$project$Dictionary$words
+	});
 var _user$project$Main$update = F2(
 	function (msg, model) {
 		var _p0 = msg;
