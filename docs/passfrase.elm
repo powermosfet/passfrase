@@ -35,32 +35,29 @@ type Msg = ToggleSpaces
          | ChangeNumberOfWords String
          | NewIndexes (List Int)
 
-generateIndexes : Model -> Cmd Msg
+generateIndexes : Model -> (Model, Cmd Msg)
 generateIndexes model =
   let
     maxIndex = List.length model.words - 1
   in 
-    Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex))
+    (model, Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex)))
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  let
-    newModel = case msg of
-      ToggleSpaces ->
-        { model | insertSpaces = not model.insertSpaces }
-      TogglePwRules ->
-        { model | satisfyPwRules = not model.satisfyPwRules }
-      ChangeNumberOfWords strN ->
-        let
-          n = case (String.toInt strN) of
-            Err _ -> 0
-            Ok x -> x
-        in
-          { model | numberOfWords = n }
-      NewIndexes indexes ->
-        { model | passphraseIndexes = indexes }
-  in
-      ( newModel, generateIndexes newModel)
+  case msg of
+    ToggleSpaces ->
+      generateIndexes { model | insertSpaces = not model.insertSpaces }
+    TogglePwRules ->
+      generateIndexes { model | satisfyPwRules = not model.satisfyPwRules }
+    ChangeNumberOfWords strN ->
+      let
+        n = case (String.toInt strN) of
+          Err _ -> 0
+          Ok x -> x
+      in
+        generateIndexes { model | numberOfWords = n }
+    NewIndexes indexes ->
+      generateIndexes { model | passphraseIndexes = indexes }
 
 -- VIEW
 view : Model -> Html Msg

@@ -9747,50 +9747,51 @@ var _user$project$Main$NewIndexes = function (a) {
 };
 var _user$project$Main$generateIndexes = function (model) {
 	var maxIndex = _elm_lang$core$List$length(model.words) - 1;
-	return A2(
-		_elm_lang$core$Random$generate,
-		_user$project$Main$NewIndexes,
-		A2(
-			_elm_lang$core$Random$list,
-			model.numberOfWords,
-			A2(_elm_lang$core$Random$int, 0, maxIndex)));
+	return {
+		ctor: '_Tuple2',
+		_0: model,
+		_1: A2(
+			_elm_lang$core$Random$generate,
+			_user$project$Main$NewIndexes,
+			A2(
+				_elm_lang$core$Random$list,
+				model.numberOfWords,
+				A2(_elm_lang$core$Random$int, 0, maxIndex)))
+	};
 };
 var _user$project$Main$update = F2(
 	function (msg, model) {
-		var newModel = function () {
-			var _p0 = msg;
-			switch (_p0.ctor) {
-				case 'ToggleSpaces':
-					return _elm_lang$core$Native_Utils.update(
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'ToggleSpaces':
+				return _user$project$Main$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
 						model,
-						{insertSpaces: !model.insertSpaces});
-				case 'TogglePwRules':
-					return _elm_lang$core$Native_Utils.update(
+						{insertSpaces: !model.insertSpaces}));
+			case 'TogglePwRules':
+				return _user$project$Main$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
 						model,
-						{satisfyPwRules: !model.satisfyPwRules});
-				case 'ChangeNumberOfWords':
-					var n = function () {
-						var _p1 = _elm_lang$core$String$toInt(_p0._0);
-						if (_p1.ctor === 'Err') {
-							return 0;
-						} else {
-							return _p1._0;
-						}
-					}();
-					return _elm_lang$core$Native_Utils.update(
+						{satisfyPwRules: !model.satisfyPwRules}));
+			case 'ChangeNumberOfWords':
+				var n = function () {
+					var _p1 = _elm_lang$core$String$toInt(_p0._0);
+					if (_p1.ctor === 'Err') {
+						return 0;
+					} else {
+						return _p1._0;
+					}
+				}();
+				return _user$project$Main$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
 						model,
-						{numberOfWords: n});
-				default:
-					return _elm_lang$core$Native_Utils.update(
+						{numberOfWords: n}));
+			default:
+				return _user$project$Main$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
 						model,
-						{passphraseIndexes: _p0._0});
-			}
-		}();
-		return {
-			ctor: '_Tuple2',
-			_0: newModel,
-			_1: _user$project$Main$generateIndexes(newModel)
-		};
+						{passphraseIndexes: _p0._0}));
+		}
 	});
 var _user$project$Main$ChangeNumberOfWords = function (a) {
 	return {ctor: 'ChangeNumberOfWords', _0: a};
