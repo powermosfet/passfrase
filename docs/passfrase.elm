@@ -2,46 +2,65 @@ import Html exposing (Html, h1, label, button, div, text, input)
 import Html.Attributes exposing (for, type_, id, value, class, checked)
 import Html.Attributes as H exposing (min, max)
 import Html.Events exposing (onClick, onInput)
+import Random exposing (int, list)
 
 import Dictionary exposing (words)
 
 main =
-  Html.beginnerProgram { model = model, view = view, update = update }
+  Html.program { init = init, view = view, update = update, subscriptions = subscriptions }
 
 -- MODEL
 type alias Model = 
   { insertSpaces : Bool
   , satisfyPwRules : Bool
   , numberOfWords : Int
+  , passphraseIndexes : List Int
   , words: List String
   }
-model : Model
-model =
-  { insertSpaces = False
-  , satisfyPwRules = False
-  , numberOfWords = 4
-  , words = Dictionary.words
-  }
+
+init : (Model, Cmd Msg)
+init =
+  ( { insertSpaces = True
+    , satisfyPwRules = False
+    , numberOfWords = 4
+    , passphraseIndexes = []
+    , words = Dictionary.words
+    }
+  , Cmd.none
+  )
 
 -- UPDATE
 type Msg = ToggleSpaces
          | TogglePwRules
          | ChangeNumberOfWords String
+         | NewIndexes (List Int)
 
-update : Msg -> Model -> Model
+generateIndexes : Model -> Cmd Msg
+generateIndexes model =
+  let
+    maxIndex = List.length model.words - 1
+  in 
+    Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex))
+
+update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
-  case msg of
-    ToggleSpaces ->
-      { model | insertSpaces = not model.insertSpaces }
-    TogglePwRules ->
-      { model | satisfyPwRules = not model.satisfyPwRules }
-    ChangeNumberOfWords strN ->
-      let
-        n = case (String.toInt strN) of
-          Err _ -> 0
-          Ok x -> x
-      in
-        { model | numberOfWords = n }
+  let
+    newModel = case msg of
+      ToggleSpaces ->
+        { model | insertSpaces = not model.insertSpaces }
+      TogglePwRules ->
+        { model | satisfyPwRules = not model.satisfyPwRules }
+      ChangeNumberOfWords strN ->
+        let
+          n = case (String.toInt strN) of
+            Err _ -> 0
+            Ok x -> x
+        in
+          { model | numberOfWords = n }
+      NewIndexes indexes ->
+        { model | passphraseIndexes = indexes }
+  in
+      ( newModel, generateIndexes newModel)
 
 -- VIEW
 view : Model -> Html Msg
@@ -81,6 +100,9 @@ checkbox labelText msg value =
       ]
     ]
 
+subscriptions : Model -> Sub Msg
+subscriptions model = Sub.none
+
 capitalize : String -> String
 capitalize str =
   let
@@ -92,7 +114,7 @@ capitalize str =
 
 generatePassphraseList : Model -> List String
 generatePassphraseList model =
-  List.take model.numberOfWords model.words
+  List.map (strGet model.words) model.passphraseIndexes
 
 generatePassphrase : Model -> String
 generatePassphrase model =
@@ -109,3 +131,8 @@ generatePassphrase model =
   in
     String.join sep passPhraseList
                           
+get : List a -> Int  -> Maybe a
+get xs n = List.head (List.drop n xs)
+                          
+strGet : List String -> Int  -> String
+strGet cs n = Maybe.withDefault "" (get cs n)
