@@ -57,7 +57,7 @@ update msg model =
       in
         generateIndexes { model | numberOfWords = n }
     NewIndexes indexes ->
-      generateIndexes { model | passphraseIndexes = indexes }
+      ({ model | passphraseIndexes = indexes }, Cmd.none)
 
 -- VIEW
 view : Model -> Html Msg

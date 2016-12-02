@@ -9787,10 +9787,13 @@ var _user$project$Main$update = F2(
 						model,
 						{numberOfWords: n}));
 			default:
-				return _user$project$Main$generateIndexes(
-					_elm_lang$core$Native_Utils.update(
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{passphraseIndexes: _p0._0}));
+						{passphraseIndexes: _p0._0}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
 		}
 	});
 var _user$project$Main$ChangeNumberOfWords = function (a) {
