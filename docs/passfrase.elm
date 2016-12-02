@@ -1,10 +1,10 @@
-import Html exposing (Html, h1, label, button, div, text, input)
+import Html exposing (Html, h1, label, button, div, text, input) 
 import Html.Attributes exposing (for, type_, id, value, class, checked)
 import Html.Attributes as H exposing (min, max)
 import Html.Events exposing (onClick, onInput)
 import Random exposing (int, list)
-
-import Dictionary exposing (words)
+import Http
+import Json.Decode as JSON
 
 main =
   Html.program { init = init, view = view, update = update, subscriptions = subscriptions }
@@ -20,19 +20,21 @@ type alias Model =
 
 init : (Model, Cmd Msg)
 init =
-  generateIndexes 
-    { insertSpaces = True
+  ( { insertSpaces = True
     , satisfyPwRules = False
     , numberOfWords = 4
-    , passphraseIndexes = [ 0, 1, 2, 3 ]
-    , words = Dictionary.words
+    , passphraseIndexes = []
+    , words = []
     }
+  , getWords
+  )
 
 -- UPDATE
 type Msg = ToggleSpaces
          | TogglePwRules
          | ChangeNumberOfWords String
          | NewIndexes (List Int)
+         | NewWords (Result Http.Error (List String))
 
 generateIndexes : Model -> (Model, Cmd Msg)
 generateIndexes model =
@@ -57,6 +59,10 @@ update msg model =
         generateIndexes { model | numberOfWords = n }
     NewIndexes indexes ->
       ({ model | passphraseIndexes = indexes }, Cmd.none)
+    NewWords (Err _) ->
+      (model, getWords)
+    NewWords (Ok words) ->
+      generateIndexes { model | words = words }
 
 -- VIEW
 view : Model -> Html Msg
@@ -86,6 +92,14 @@ view model =
           ]
         ]
     ]
+
+
+getWords : Cmd Msg
+getWords =
+    Http.send NewWords (Http.get "nrk.json" parseWords)
+
+parseWords : JSON.Decoder (List String)
+parseWords = JSON.list JSON.string
 
 checkbox : String -> Msg -> Bool -> Html Msg
 checkbox labelText msg value = 
