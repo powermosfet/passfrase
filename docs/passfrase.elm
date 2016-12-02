@@ -35,6 +35,7 @@ type Msg = ToggleSpaces
          | ChangeNumberOfWords String
          | NewIndexes (List Int)
          | NewWords (Result Http.Error (List String))
+         | NewPassphrase
 
 generateIndexes : Model -> (Model, Cmd Msg)
 generateIndexes model =
@@ -63,6 +64,8 @@ update msg model =
       (model, getWords)
     NewWords (Ok words) ->
       generateIndexes { model | words = words }
+    NewPassphrase ->
+      generateIndexes model
 
 -- VIEW
 view : Model -> Html Msg
@@ -86,13 +89,12 @@ view model =
       , checkbox "Sett inn mellomrom" ToggleSpaces model.insertSpaces
       , checkbox "Oppfyll tullete passordkrav" TogglePwRules model.satisfyPwRules 
       ]
-    , div [ class "panel panel-default passphrase-panel col-md-12" ]
+    , div [ class "panel panel-default passphrase-panel col-md-12", onClick NewPassphrase ]
         [ div [ class "panel-body" ]
           [ h1 [ class "passphrase-text" ] [ text ( generatePassphrase model ) ]
           ]
         ]
     ]
-
 
 getWords : Cmd Msg
 getWords =
@@ -131,7 +133,7 @@ generatePassphrase model =
   let
     passPhraseList =
       if model.satisfyPwRules
-      then List.map capitalize (generatePassphraseList model)
+      then List.map capitalize (generatePassphraseList model ++ [ "%5" ])
       else (generatePassphraseList model)
 
     sep =

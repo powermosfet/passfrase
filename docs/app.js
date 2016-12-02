@@ -9439,7 +9439,14 @@ var _user$project$Main$generatePassphrase = function (model) {
 	var passPhraseList = model.satisfyPwRules ? A2(
 		_elm_lang$core$List$map,
 		_user$project$Main$capitalize,
-		_user$project$Main$generatePassphraseList(model)) : _user$project$Main$generatePassphraseList(model);
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			_user$project$Main$generatePassphraseList(model),
+			{
+				ctor: '::',
+				_0: '%5',
+				_1: {ctor: '[]'}
+			})) : _user$project$Main$generatePassphraseList(model);
 	return A2(_elm_lang$core$String$join, sep, passPhraseList);
 };
 var _user$project$Main$subscriptions = function (model) {
@@ -9491,6 +9498,7 @@ var _user$project$Main$Model = F5(
 	function (a, b, c, d, e) {
 		return {insertSpaces: a, satisfyPwRules: b, numberOfWords: c, passphraseIndexes: d, words: e};
 	});
+var _user$project$Main$NewPassphrase = {ctor: 'NewPassphrase'};
 var _user$project$Main$NewWords = function (a) {
 	return {ctor: 'NewWords', _0: a};
 };
@@ -9561,7 +9569,7 @@ var _user$project$Main$update = F2(
 						{passphraseIndexes: _p0._0}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
-			default:
+			case 'NewWords':
 				if (_p0._0.ctor === 'Err') {
 					return {ctor: '_Tuple2', _0: model, _1: _user$project$Main$getWords};
 				} else {
@@ -9570,6 +9578,8 @@ var _user$project$Main$update = F2(
 							model,
 							{words: _p0._0._0}));
 				}
+			default:
+				return _user$project$Main$generateIndexes(model);
 		}
 	});
 var _user$project$Main$ChangeNumberOfWords = function (a) {
@@ -9688,7 +9698,11 @@ var _user$project$Main$view = function (model) {
 							{
 								ctor: '::',
 								_0: _elm_lang$html$Html_Attributes$class('panel panel-default passphrase-panel col-md-12'),
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$NewPassphrase),
+									_1: {ctor: '[]'}
+								}
 							},
 							{
 								ctor: '::',
