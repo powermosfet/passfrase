@@ -2,7 +2,7 @@
 Generate passphrases
 
 > This repository also contains a web version of the passphrase generator
-> available through GitHub pages at http://powermosfet.github.io/passfrase
+> available through GitHub pages at https://powermosfet.github.io/passfrase
 > The web version is written in Elm.
 
 This is a small python script that reads words from a text file, and picks a number of them randomly to create a passphrase. A sample file with norwegian words is included in the repository.
