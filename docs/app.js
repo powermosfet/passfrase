@@ -9433,8 +9433,32 @@ var _user$project$Model$init = {
 		insertSpaces: true,
 		satisfyPwRules: false,
 		numberOfWords: 4,
-		passphraseIndexes: {ctor: '[]'},
-		words: {ctor: '[]'}
+		passphraseIndexes: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 1,
+				_1: {
+					ctor: '::',
+					_0: 2,
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		words: {
+			ctor: '::',
+			_0: 'Vennligst',
+			_1: {
+				ctor: '::',
+				_0: 'vent',
+				_1: {
+					ctor: '::',
+					_0: '...',
+					_1: {ctor: '[]'}
+				}
+			}
+		}
 	},
 	_1: _user$project$GetWords$getWords
 };
@@ -9700,11 +9724,7 @@ var _user$project$View$view = function (model) {
 							{
 								ctor: '::',
 								_0: _elm_lang$html$Html_Attributes$class('panel panel-default passphrase-panel col-md-12'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$Message$NewPassphrase),
-									_1: {ctor: '[]'}
-								}
+								_1: {ctor: '[]'}
 							},
 							{
 								ctor: '::',
