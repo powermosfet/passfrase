@@ -15,6 +15,7 @@ generatePassphrase model =
       if model.avoidNordicCharacters
       then removeNordicCharacters
       else identity
+
     passPhraseList =
       if model.satisfyPwRules
       then List.map capitalize (generatePassphraseList model ++ [ "%5" ])
@@ -28,7 +29,9 @@ generatePassphrase model =
     maybeRemoveNordicCharacters <| String.join sep passPhraseList
                           
 removeNordicCharacters : String -> String
-removeNordicCharacters = replace All (regex "[æøå]") (\_ -> "")
+removeNordicCharacters = (replace All (regex "æ") (\_ -> "ae"))
+                      << (replace All (regex "ø") (\_ -> "oe"))
+                      << (replace All (regex "å") (\_ -> "aa"))
 
 capitalize : String -> String
 capitalize str =
