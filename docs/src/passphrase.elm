@@ -29,9 +29,11 @@ generatePassphrase model =
     maybeRemoveNordicCharacters <| String.join sep passPhraseList
                           
 removeNordicCharacters : String -> String
-removeNordicCharacters = (replace All (regex "æ") (\_ -> "ae"))
-                      << (replace All (regex "ø") (\_ -> "oe"))
-                      << (replace All (regex "å") (\_ -> "aa"))
+removeNordicCharacters = 
+  let
+    rep pattern replacement = replace All (regex pattern) (\_ -> replacement)
+  in
+    rep "æ" "ae" << rep "ø" "oe" << rep "å" "aa"
 
 capitalize : String -> String
 capitalize str =

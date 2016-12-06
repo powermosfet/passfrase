@@ -9694,13 +9694,29 @@ var _user$project$Passphrase$capitalize = function (str) {
 		_elm_lang$core$String$toUpper(c),
 		cs);
 };
-var _user$project$Passphrase$removeNordicCharacters = A3(
-	_elm_lang$core$Regex$replace,
-	_elm_lang$core$Regex$All,
-	_elm_lang$core$Regex$regex('[æøå]'),
-	function (_p0) {
-		return '';
-	});
+var _user$project$Passphrase$removeNordicCharacters = function () {
+	var rep = F2(
+		function (pattern, replacement) {
+			return A3(
+				_elm_lang$core$Regex$replace,
+				_elm_lang$core$Regex$All,
+				_elm_lang$core$Regex$regex(pattern),
+				function (_p0) {
+					return replacement;
+				});
+		});
+	return function (_p1) {
+		return A3(
+			rep,
+			'æ',
+			'ae',
+			A3(
+				rep,
+				'ø',
+				'oe',
+				A3(rep, 'å', 'aa', _p1)));
+	};
+}();
 var _user$project$Passphrase$generatePassphraseList = function (model) {
 	return A2(
 		_elm_lang$core$List$map,
