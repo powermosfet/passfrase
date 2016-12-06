@@ -21,6 +21,8 @@ update msg model =
       generateIndexes { model | insertSpaces = not model.insertSpaces }
     TogglePwRules ->
       generateIndexes { model | satisfyPwRules = not model.satisfyPwRules }
+    ToggleAvoidNordicCharacters ->
+      generateIndexes { model | avoidNordicCharacters = not model.avoidNordicCharacters }
     ChangeNumberOfWords strN ->
       let
         n = case (String.toInt strN) of

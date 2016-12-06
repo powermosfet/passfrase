@@ -1,5 +1,7 @@
 module Passphrase exposing (..)
 
+import Regex exposing (HowMany(All), regex, replace)
+
 import Model exposing (Model)
 
 generatePassphraseList : Model -> List String
@@ -9,6 +11,10 @@ generatePassphraseList model =
 generatePassphrase : Model -> String
 generatePassphrase model =
   let
+    maybeRemoveNordicCharacters = 
+      if model.avoidNordicCharacters
+      then removeNordicCharacters
+      else identity
     passPhraseList =
       if model.satisfyPwRules
       then List.map capitalize (generatePassphraseList model ++ [ "%5" ])
@@ -19,8 +25,11 @@ generatePassphrase model =
       then " "
       else ""
   in
-    String.join sep passPhraseList
+    maybeRemoveNordicCharacters <| String.join sep passPhraseList
                           
+removeNordicCharacters : String -> String
+removeNordicCharacters = replace All (regex "[æøå]") (\_ -> "")
+
 capitalize : String -> String
 capitalize str =
   let

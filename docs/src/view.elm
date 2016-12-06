@@ -30,6 +30,7 @@ view model =
       [ label [] [ text "Innstillinger" ]
       , checkbox "Sett inn mellomrom" ToggleSpaces model.insertSpaces
       , checkbox "Oppfyll tullete passordkrav" TogglePwRules model.satisfyPwRules 
+      , checkbox "Unngå æ/ø/å" ToggleAvoidNordicCharacters model.avoidNordicCharacters 
       ]
     , div [ class "panel panel-default passphrase-panel col-md-12" ]
         [ div [ class "panel-body" ]
