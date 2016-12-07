@@ -1,12 +1,12 @@
 body {
-  background: #edeff0;
+    background-color: #edeff0;
 }
 
-.passphrase-panel {
-  background: #000000;
-  border: none;
+.PassphrasePanel {
+    background-color: #000000;
+    border: 0;
 }
 
-.passphrase-text {
-  color: #edeff0;
+.PassphraseText {
+    color: #edeff0;
 }
