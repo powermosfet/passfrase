@@ -14548,12 +14548,8 @@ var _user$project$View$view = function (model) {
 											_0: 'panel-default',
 											_1: {
 												ctor: '::',
-												_0: 'passphrase-panel',
-												_1: {
-													ctor: '::',
-													_0: 'col-md-12',
-													_1: {ctor: '[]'}
-												}
+												_0: 'col-md-12',
+												_1: {ctor: '[]'}
 											}
 										}
 									}),
@@ -14568,7 +14564,7 @@ var _user$project$View$view = function (model) {
 										_0: _user$project$View$class(
 											{
 												ctor: '::',
-												_0: 'panel-body',
+												_0: _user$project$Styles_Classes$PassphrasePanel,
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}
@@ -14576,21 +14572,37 @@ var _user$project$View$view = function (model) {
 									{
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$h1,
+											_elm_lang$html$Html$div,
 											{
 												ctor: '::',
 												_0: _user$project$View$class(
 													{
 														ctor: '::',
-														_0: _user$project$Styles_Classes$PassphraseText,
+														_0: 'panel-body',
 														_1: {ctor: '[]'}
 													}),
 												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													_user$project$Passphrase$generatePassphrase(model)),
+												_0: A2(
+													_elm_lang$html$Html$h1,
+													{
+														ctor: '::',
+														_0: _user$project$View$class(
+															{
+																ctor: '::',
+																_0: _user$project$Styles_Classes$PassphraseText,
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(
+															_user$project$Passphrase$generatePassphrase(model)),
+														_1: {ctor: '[]'}
+													}),
 												_1: {ctor: '[]'}
 											}),
 										_1: {ctor: '[]'}

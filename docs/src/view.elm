@@ -8,8 +8,8 @@ import Message exposing (Msg(..))
 import Model exposing (Model)
 import Passphrase exposing (generatePassphrase)
 import Html.CssHelpers as Hlp
-import Styles.Styles
-import Styles.Classes
+import Styles.Styles as Styles
+import Styles.Classes as Cls
 
 
 { id, class, classList } =
@@ -39,9 +39,11 @@ view model =
             , checkbox "Oppfyll tullete passordkrav" TogglePwRules model.satisfyPwRules
             , checkbox "Unngå æ/ø/å" ToggleAvoidNordicCharacters model.avoidNordicCharacters
             ]
-        , div [ class [ "panel", "panel-default", "passphrase-panel", "col-md-12" ] ]
-            [ div [ class [ "panel-body" ] ]
-                [ h1 [ class [ Styles.Classes.PassphraseText ] ] [ text (generatePassphrase model) ]
+        , div [ class [ "panel", "panel-default", "col-md-12" ] ]
+            [ div [ class [ Cls.PassphrasePanel ] ]
+                [ div [ class [ "panel-body" ] ]
+                    [ h1 [ class [ Cls.PassphraseText ] ] [ text (generatePassphrase model) ]
+                    ]
                 ]
             ]
         ]
