@@ -14,14 +14,19 @@ type alias Model =
     }
 
 
-init : ( Model, Cmd Msg )
-init =
-    ( { insertSpaces = True
-      , satisfyPwRules = False
-      , avoidNordicCharacters = False
-      , numberOfWords = 4
-      , passphraseIndexes = [ 0, 1, 2 ]
-      , words = [ "Vennligst", "vent", "..." ]
-      }
-    , getWords
-    )
+init : Maybe Model -> ( Model, Cmd Msg )
+init mayModel =
+    case mayModel of
+        Just model ->
+            ( model, getWords )
+
+        Nothing ->
+            ( { insertSpaces = True
+              , satisfyPwRules = False
+              , avoidNordicCharacters = False
+              , numberOfWords = 4
+              , passphraseIndexes = [ 0, 1, 2 ]
+              , words = [ "Vennligst", "vent", "..." ]
+              }
+            , getWords
+            )

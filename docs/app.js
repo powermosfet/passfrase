@@ -14126,59 +14126,93 @@ var _user$project$GetWords$getWords = A2(
 	_user$project$Message$NewWords,
 	A2(_elm_lang$http$Http$get, 'nrk.json', _user$project$GetWords$parseWords));
 
-var _user$project$Model$init = {
-	ctor: '_Tuple2',
-	_0: {
-		insertSpaces: true,
-		satisfyPwRules: false,
-		avoidNordicCharacters: false,
-		numberOfWords: 4,
-		passphraseIndexes: {
-			ctor: '::',
-			_0: 0,
-			_1: {
-				ctor: '::',
-				_0: 1,
-				_1: {
+var _user$project$Model$init = function (mayModel) {
+	var _p0 = mayModel;
+	if (_p0.ctor === 'Just') {
+		return {ctor: '_Tuple2', _0: _p0._0, _1: _user$project$GetWords$getWords};
+	} else {
+		return {
+			ctor: '_Tuple2',
+			_0: {
+				insertSpaces: true,
+				satisfyPwRules: false,
+				avoidNordicCharacters: false,
+				numberOfWords: 4,
+				passphraseIndexes: {
 					ctor: '::',
-					_0: 2,
-					_1: {ctor: '[]'}
-				}
-			}
-		},
-		words: {
-			ctor: '::',
-			_0: 'Vennligst',
-			_1: {
-				ctor: '::',
-				_0: 'vent',
-				_1: {
+					_0: 0,
+					_1: {
+						ctor: '::',
+						_0: 1,
+						_1: {
+							ctor: '::',
+							_0: 2,
+							_1: {ctor: '[]'}
+						}
+					}
+				},
+				words: {
 					ctor: '::',
-					_0: '...',
-					_1: {ctor: '[]'}
+					_0: 'Vennligst',
+					_1: {
+						ctor: '::',
+						_0: 'vent',
+						_1: {
+							ctor: '::',
+							_0: '...',
+							_1: {ctor: '[]'}
+						}
+					}
 				}
-			}
-		}
-	},
-	_1: _user$project$GetWords$getWords
+			},
+			_1: _user$project$GetWords$getWords
+		};
+	}
 };
 var _user$project$Model$Model = F6(
 	function (a, b, c, d, e, f) {
 		return {insertSpaces: a, satisfyPwRules: b, avoidNordicCharacters: c, numberOfWords: d, passphraseIndexes: e, words: f};
 	});
 
+var _user$project$Update$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
+	'setStorage',
+	function (v) {
+		return {
+			insertSpaces: v.insertSpaces,
+			satisfyPwRules: v.satisfyPwRules,
+			avoidNordicCharacters: v.avoidNordicCharacters,
+			numberOfWords: v.numberOfWords,
+			passphraseIndexes: _elm_lang$core$Native_List.toArray(v.passphraseIndexes).map(
+				function (v) {
+					return v;
+				}),
+			words: _elm_lang$core$Native_List.toArray(v.words).map(
+				function (v) {
+					return v;
+				})
+		};
+	});
 var _user$project$Update$generateIndexes = function (model) {
 	var maxIndex = _elm_lang$core$List$length(model.words) - 1;
 	return {
 		ctor: '_Tuple2',
 		_0: model,
-		_1: A2(
-			_elm_lang$core$Random$generate,
-			_user$project$Message$NewIndexes,
-			A2(
-				_elm_lang$core$Random$list,
-				model.numberOfWords,
-				A2(_elm_lang$core$Random$int, 0, maxIndex)))
+		_1: _elm_lang$core$Platform_Cmd$batch(
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$core$Random$generate,
+					_user$project$Message$NewIndexes,
+					A2(
+						_elm_lang$core$Random$list,
+						model.numberOfWords,
+						A2(_elm_lang$core$Random$int, 0, maxIndex))),
+				_1: {
+					ctor: '::',
+					_0: _user$project$Update$setStorage(model),
+					_1: {ctor: '[]'}
+				}
+			})
 	};
 };
 var _user$project$Update$update = F2(
@@ -14619,8 +14653,58 @@ var _user$project$View$view = function (model) {
 var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Main$main = _elm_lang$html$Html$program(
-	{init: _user$project$Model$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})();
+var _user$project$Main$main = _elm_lang$html$Html$programWithFlags(
+	{init: _user$project$Model$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})(
+	_elm_lang$core$Json_Decode$oneOf(
+		{
+			ctor: '::',
+			_0: _elm_lang$core$Json_Decode$null(_elm_lang$core$Maybe$Nothing),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$core$Json_Decode$map,
+					_elm_lang$core$Maybe$Just,
+					A2(
+						_elm_lang$core$Json_Decode$andThen,
+						function (avoidNordicCharacters) {
+							return A2(
+								_elm_lang$core$Json_Decode$andThen,
+								function (insertSpaces) {
+									return A2(
+										_elm_lang$core$Json_Decode$andThen,
+										function (numberOfWords) {
+											return A2(
+												_elm_lang$core$Json_Decode$andThen,
+												function (passphraseIndexes) {
+													return A2(
+														_elm_lang$core$Json_Decode$andThen,
+														function (satisfyPwRules) {
+															return A2(
+																_elm_lang$core$Json_Decode$andThen,
+																function (words) {
+																	return _elm_lang$core$Json_Decode$succeed(
+																		{avoidNordicCharacters: avoidNordicCharacters, insertSpaces: insertSpaces, numberOfWords: numberOfWords, passphraseIndexes: passphraseIndexes, satisfyPwRules: satisfyPwRules, words: words});
+																},
+																A2(
+																	_elm_lang$core$Json_Decode$field,
+																	'words',
+																	_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string)));
+														},
+														A2(_elm_lang$core$Json_Decode$field, 'satisfyPwRules', _elm_lang$core$Json_Decode$bool));
+												},
+												A2(
+													_elm_lang$core$Json_Decode$field,
+													'passphraseIndexes',
+													_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$int)));
+										},
+										A2(_elm_lang$core$Json_Decode$field, 'numberOfWords', _elm_lang$core$Json_Decode$int));
+								},
+								A2(_elm_lang$core$Json_Decode$field, 'insertSpaces', _elm_lang$core$Json_Decode$bool));
+						},
+						A2(_elm_lang$core$Json_Decode$field, 'avoidNordicCharacters', _elm_lang$core$Json_Decode$bool))),
+				_1: {ctor: '[]'}
+			}
+		}));
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};

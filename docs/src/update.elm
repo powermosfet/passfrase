@@ -1,10 +1,14 @@
-module Update exposing (..)
+port module Update exposing (..)
 
 import Http
 import Random exposing (int, list)
 import Message exposing (Msg(..))
 import Model exposing (Model)
 import GetWords exposing (getWords)
+import Platform.Cmd as Cmd exposing (batch)
+
+
+port setStorage : Model -> Cmd msg
 
 
 generateIndexes : Model -> ( Model, Cmd Msg )
@@ -13,7 +17,12 @@ generateIndexes model =
         maxIndex =
             List.length model.words - 1
     in
-        ( model, Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex)) )
+        ( model
+        , batch
+            [ Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex))
+            , setStorage model
+            ]
+        )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
