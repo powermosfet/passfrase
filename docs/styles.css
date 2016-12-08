@@ -2,7 +2,7 @@ body {
     background-color: #edeff0;
 }
 
-.PassphrasePanel {
+.PassphrasePanel > div {
     background-color: #000000;
     border: 0;
 }

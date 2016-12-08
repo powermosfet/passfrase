@@ -14361,12 +14361,22 @@ var _user$project$Styles_Styles$css = _rtfeldman$elm_css$Css$stylesheet(
 				_user$project$Styles_Classes$PassphrasePanel,
 				{
 					ctor: '::',
-					_0: _rtfeldman$elm_css$Css$backgroundColor(_user$project$Styles_Colors$panel),
-					_1: {
-						ctor: '::',
-						_0: _rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
-						_1: {ctor: '[]'}
-					}
+					_0: _rtfeldman$elm_css$Css$children(
+						{
+							ctor: '::',
+							_0: _rtfeldman$elm_css$Css_Elements$div(
+								{
+									ctor: '::',
+									_0: _rtfeldman$elm_css$Css$backgroundColor(_user$project$Styles_Colors$panel),
+									_1: {
+										ctor: '::',
+										_0: _rtfeldman$elm_css$Css$border(_rtfeldman$elm_css$Css$zero),
+										_1: {ctor: '[]'}
+									}
+								}),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
 				}),
 			_1: {
 				ctor: '::',
@@ -14576,16 +14586,8 @@ var _user$project$View$view = function (model) {
 								_0: _user$project$View$class(
 									{
 										ctor: '::',
-										_0: 'panel',
-										_1: {
-											ctor: '::',
-											_0: 'panel-default',
-											_1: {
-												ctor: '::',
-												_0: 'col-md-12',
-												_1: {ctor: '[]'}
-											}
-										}
+										_0: _user$project$Styles_Classes$PassphrasePanel,
+										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
 							},
@@ -14598,8 +14600,16 @@ var _user$project$View$view = function (model) {
 										_0: _user$project$View$class(
 											{
 												ctor: '::',
-												_0: _user$project$Styles_Classes$PassphrasePanel,
-												_1: {ctor: '[]'}
+												_0: 'panel',
+												_1: {
+													ctor: '::',
+													_0: 'panel-default',
+													_1: {
+														ctor: '::',
+														_0: 'col-md-12',
+														_1: {ctor: '[]'}
+													}
+												}
 											}),
 										_1: {ctor: '[]'}
 									},

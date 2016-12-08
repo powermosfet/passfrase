@@ -39,8 +39,8 @@ view model =
             , checkbox "Oppfyll tullete passordkrav" TogglePwRules model.satisfyPwRules
             , checkbox "Unngå æ/ø/å" ToggleAvoidNordicCharacters model.avoidNordicCharacters
             ]
-        , div [ class [ "panel", "panel-default", "col-md-12" ] ]
-            [ div [ class [ Cls.PassphrasePanel ] ]
+        , div [ class [ Cls.PassphrasePanel ] ]
+            [ div [ class [ "panel", "panel-default", "col-md-12" ] ]
                 [ div [ class [ "panel-body" ] ]
                     [ h1 [ class [ Cls.PassphraseText ] ] [ text (generatePassphrase model) ]
                     ]
