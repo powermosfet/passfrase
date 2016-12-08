@@ -14129,7 +14129,40 @@ var _user$project$GetWords$getWords = A2(
 var _user$project$Model$init = function (mayModel) {
 	var _p0 = mayModel;
 	if (_p0.ctor === 'Just') {
-		return {ctor: '_Tuple2', _0: _p0._0, _1: _user$project$GetWords$getWords};
+		return {
+			ctor: '_Tuple2',
+			_0: _elm_lang$core$Native_Utils.update(
+				_p0._0,
+				{
+					words: {
+						ctor: '::',
+						_0: 'Vennligst',
+						_1: {
+							ctor: '::',
+							_0: 'vent',
+							_1: {
+								ctor: '::',
+								_0: '...',
+								_1: {ctor: '[]'}
+							}
+						}
+					},
+					passphraseIndexes: {
+						ctor: '::',
+						_0: 0,
+						_1: {
+							ctor: '::',
+							_0: 1,
+							_1: {
+								ctor: '::',
+								_0: 2,
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}),
+			_1: _user$project$GetWords$getWords
+		};
 	} else {
 		return {
 			ctor: '_Tuple2',
@@ -14209,7 +14242,12 @@ var _user$project$Update$generateIndexes = function (model) {
 						A2(_elm_lang$core$Random$int, 0, maxIndex))),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Update$setStorage(model),
+					_0: _user$project$Update$setStorage(
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								words: {ctor: '[]'}
+							})),
 					_1: {ctor: '[]'}
 				}
 			})

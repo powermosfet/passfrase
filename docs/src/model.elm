@@ -18,7 +18,12 @@ init : Maybe Model -> ( Model, Cmd Msg )
 init mayModel =
     case mayModel of
         Just model ->
-            ( model, getWords )
+            ( { model
+                | words = [ "Vennligst", "vent", "..." ]
+                , passphraseIndexes = [ 0, 1, 2 ]
+              }
+            , getWords
+            )
 
         Nothing ->
             ( { insertSpaces = True

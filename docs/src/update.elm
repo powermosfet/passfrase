@@ -20,7 +20,7 @@ generateIndexes model =
         ( model
         , batch
             [ Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex))
-            , setStorage model
+            , setStorage { model | words = [] }
             ]
         )
 
