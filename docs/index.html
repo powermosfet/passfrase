@@ -17,13 +17,13 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
     <script src="app.js"></script>
     <script>
-      const model = localStorage.getItem('model')
-      const startingModel = model ? JSON.parse(model) : null
+      const model = localStorage.getItem('model');
+      const startingModel = model ? JSON.parse(model) : null;
 
-      const elmApp = Elm.Main.embed(document.getElementById('container'), startingModel)
+      const elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
 
       elmApp.ports.setStorage.subscribe(function (state) {
-        localStorage.setItem('model', JSON.stringify(state))
+        localStorage.setItem('model', JSON.stringify(state));
       })
     </script>
   </body>
