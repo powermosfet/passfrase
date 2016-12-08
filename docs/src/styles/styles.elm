@@ -2,24 +2,24 @@ module Styles.Styles exposing (..)
 
 import Css exposing (..)
 import Css.Elements exposing (div, body, li)
-import Styles.Colors
-import Styles.Classes
+import Styles.Colors as Color
+import Styles.Classes as Class
 
 
 css =
     stylesheet
         [ body
-            [ backgroundColor Styles.Colors.background
+            [ backgroundColor Color.background
             ]
-        , (.) Styles.Classes.PassphrasePanel
+        , (.) Class.PassphrasePanel
             [ children
                 [ div
-                    [ backgroundColor Styles.Colors.panel
+                    [ backgroundColor Color.panel
                     , border zero
                     ]
                 ]
             ]
-        , (.) Styles.Classes.PassphraseText
-            [ color Styles.Colors.background
+        , (.) Class.PassphraseText
+            [ color Color.background
             ]
         ]
