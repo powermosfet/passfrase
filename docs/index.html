@@ -24,7 +24,7 @@
       var elmApp;
       try {
         elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
-      } catch {
+      } catch (ex) {
         elmApp = Elm.Main.embed(document.getElementById('container'), null);
       }
 
