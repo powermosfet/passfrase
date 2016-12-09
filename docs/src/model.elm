@@ -33,7 +33,7 @@ init mayModel =
               , numberOfWords = 4
               , passphraseIndexes = [ 0, 1, 2 ]
               , words = [ "Vennligst", "vent", "..." ]
-              , language = "no"
+              , language = "en"
               }
             , getWords
             )

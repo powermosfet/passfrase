@@ -2,7 +2,8 @@ module Translations.Types exposing (..)
 
 
 type Label
-    = Title
+    = CurrentLanguage
+    | Title
     | PleaseWait
     | NumberOfWords
     | Settings

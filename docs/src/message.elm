@@ -11,3 +11,4 @@ type Msg
     | NewIndexes (List Int)
     | NewWords (Result Http.Error (List String))
     | NewPassphrase
+    | ChangeLanguage String

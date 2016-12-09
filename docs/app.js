@@ -14106,6 +14106,9 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
+var _user$project$Message$ChangeLanguage = function (a) {
+	return {ctor: 'ChangeLanguage', _0: a};
+};
 var _user$project$Message$NewPassphrase = {ctor: 'NewPassphrase'};
 var _user$project$Message$NewWords = function (a) {
 	return {ctor: 'NewWords', _0: a};
@@ -14133,10 +14136,13 @@ var _user$project$Translations_Types$Settings = {ctor: 'Settings'};
 var _user$project$Translations_Types$NumberOfWords = {ctor: 'NumberOfWords'};
 var _user$project$Translations_Types$PleaseWait = {ctor: 'PleaseWait'};
 var _user$project$Translations_Types$Title = {ctor: 'Title'};
+var _user$project$Translations_Types$CurrentLanguage = {ctor: 'CurrentLanguage'};
 
 var _user$project$Translations_Norwegian$getText = function (label) {
 	var _p0 = label;
 	switch (_p0.ctor) {
+		case 'CurrentLanguage':
+			return _elm_lang$core$Maybe$Just('Språk: Norsk');
 		case 'Title':
 			return _elm_lang$core$Maybe$Just('Passfrase');
 		case 'PleaseWait':
@@ -14157,6 +14163,8 @@ var _user$project$Translations_Norwegian$getText = function (label) {
 var _user$project$Translations_English$getText = function (label) {
 	var _p0 = label;
 	switch (_p0.ctor) {
+		case 'CurrentLanguage':
+			return _elm_lang$core$Maybe$Just('Language: English');
 		case 'Title':
 			return _elm_lang$core$Maybe$Just('Passfrase');
 		case 'PleaseWait':
@@ -14387,8 +14395,13 @@ var _user$project$Update$update = F2(
 							model,
 							{words: _p0._0._0}));
 				}
-			default:
+			case 'NewPassphrase':
 				return _user$project$Update$generateIndexes(model);
+			default:
+				return _user$project$Update$generateIndexes(
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{language: _p0._0}));
 		}
 	});
 
@@ -14519,6 +14532,352 @@ var _user$project$Styles_Styles$css = _rtfeldman$elm_css$Css$stylesheet(
 		}
 	});
 
+var _user$project$Navbar$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('');
+var _user$project$Navbar$id = _user$project$Navbar$_p0.id;
+var _user$project$Navbar$class = _user$project$Navbar$_p0.$class;
+var _user$project$Navbar$classList = _user$project$Navbar$_p0.classList;
+var _user$project$Navbar$navbar = function (model) {
+	var t = _user$project$Internationalization$getText(model.language);
+	return A2(
+		_elm_lang$html$Html$nav,
+		{
+			ctor: '::',
+			_0: _user$project$Navbar$class(
+				{
+					ctor: '::',
+					_0: 'navbar',
+					_1: {
+						ctor: '::',
+						_0: 'navbar-default',
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$div,
+				{
+					ctor: '::',
+					_0: _user$project$Navbar$class(
+						{
+							ctor: '::',
+							_0: 'container-fluid',
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$div,
+						{
+							ctor: '::',
+							_0: _user$project$Navbar$class(
+								{
+									ctor: '::',
+									_0: 'navbar-header',
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$button,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Attributes$type_('button'),
+									_1: {
+										ctor: '::',
+										_0: _user$project$Navbar$class(
+											{
+												ctor: '::',
+												_0: 'navbar-toggle',
+												_1: {
+													ctor: '::',
+													_0: 'collapsed',
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'collapse'),
+											_1: {
+												ctor: '::',
+												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-target', '#bs-example-navbar-collapse-1'),
+												_1: {
+													ctor: '::',
+													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-expanded', 'false'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								},
+								{
+									ctor: '::',
+									_0: A2(
+										_elm_lang$html$Html$span,
+										{
+											ctor: '::',
+											_0: _user$project$Navbar$class(
+												{
+													ctor: '::',
+													_0: 'sr-only',
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$html$Html$text('Toggle navigation'),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$span,
+											{
+												ctor: '::',
+												_0: _user$project$Navbar$class(
+													{
+														ctor: '::',
+														_0: 'icon-bar',
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
+											},
+											{ctor: '[]'}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$span,
+												{
+													ctor: '::',
+													_0: _user$project$Navbar$class(
+														{
+															ctor: '::',
+															_0: 'icon-bar',
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												},
+												{ctor: '[]'}),
+											_1: {
+												ctor: '::',
+												_0: A2(
+													_elm_lang$html$Html$span,
+													{
+														ctor: '::',
+														_0: _user$project$Navbar$class(
+															{
+																ctor: '::',
+																_0: 'icon-bar',
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													},
+													{ctor: '[]'}),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$a,
+									{
+										ctor: '::',
+										_0: _user$project$Navbar$class(
+											{
+												ctor: '::',
+												_0: 'navbar-brand',
+												_1: {ctor: '[]'}
+											}),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$html$Html_Attributes$href('#'),
+											_1: {ctor: '[]'}
+										}
+									},
+									{
+										ctor: '::',
+										_0: _elm_lang$html$Html$text(
+											t(_user$project$Translations_Types$Title)),
+										_1: {ctor: '[]'}
+									}),
+								_1: {ctor: '[]'}
+							}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$ul,
+							{
+								ctor: '::',
+								_0: _user$project$Navbar$class(
+									{
+										ctor: '::',
+										_0: 'nav',
+										_1: {
+											ctor: '::',
+											_0: 'navbar-nav',
+											_1: {
+												ctor: '::',
+												_0: 'navbar-right',
+												_1: {ctor: '[]'}
+											}
+										}
+									}),
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: A2(
+									_elm_lang$html$Html$li,
+									{
+										ctor: '::',
+										_0: _user$project$Navbar$class(
+											{
+												ctor: '::',
+												_0: 'dropdown',
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									},
+									{
+										ctor: '::',
+										_0: A2(
+											_elm_lang$html$Html$a,
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html_Attributes$href('#'),
+												_1: {
+													ctor: '::',
+													_0: _user$project$Navbar$class(
+														{
+															ctor: '::',
+															_0: 'dropdown-toggle',
+															_1: {ctor: '[]'}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'dropdown'),
+														_1: {
+															ctor: '::',
+															_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'button'),
+															_1: {
+																ctor: '::',
+																_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
+																_1: {
+																	ctor: '::',
+																	_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-expanded', 'false'),
+																	_1: {ctor: '[]'}
+																}
+															}
+														}
+													}
+												}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$html$Html$text(
+													t(_user$project$Translations_Types$CurrentLanguage)),
+												_1: {
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$span,
+														{
+															ctor: '::',
+															_0: _user$project$Navbar$class(
+																{
+																	ctor: '::',
+																	_0: 'caret',
+																	_1: {ctor: '[]'}
+																}),
+															_1: {ctor: '[]'}
+														},
+														{ctor: '[]'}),
+													_1: {ctor: '[]'}
+												}
+											}),
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$ul,
+												{
+													ctor: '::',
+													_0: _user$project$Navbar$class(
+														{
+															ctor: '::',
+															_0: 'dropdown-menu',
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$li,
+														{ctor: '[]'},
+														{
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$a,
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html_Attributes$href('#'),
+																	_1: {
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Events$onClick(
+																			_user$project$Message$ChangeLanguage('no')),
+																		_1: {ctor: '[]'}
+																	}
+																},
+																{
+																	ctor: '::',
+																	_0: _elm_lang$html$Html$text('Norsk'),
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$a,
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html_Attributes$href('#'),
+																		_1: {
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Events$onClick(
+																				_user$project$Message$ChangeLanguage('en')),
+																			_1: {ctor: '[]'}
+																		}
+																	},
+																	{
+																		ctor: '::',
+																		_0: _elm_lang$html$Html$text('English'),
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {ctor: '[]'}
+												}),
+											_1: {ctor: '[]'}
+										}
+									}),
+								_1: {ctor: '[]'}
+							}),
+						_1: {ctor: '[]'}
+					}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
+
 var _user$project$View$_p0 = _rtfeldman$elm_css_helpers$Html_CssHelpers$withNamespace('');
 var _user$project$View$id = _user$project$View$_p0.id;
 var _user$project$View$class = _user$project$View$_p0.$class;
@@ -14576,15 +14935,7 @@ var _user$project$View$view = function (model) {
 		{ctor: '[]'},
 		{
 			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$h1,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(
-						t(_user$project$Translations_Types$Title)),
-					_1: {ctor: '[]'}
-				}),
+			_0: _user$project$Navbar$navbar(model),
 			_1: {
 				ctor: '::',
 				_0: A2(

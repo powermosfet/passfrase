@@ -60,3 +60,6 @@ update msg model =
 
         NewPassphrase ->
             generateIndexes model
+
+        ChangeLanguage language ->
+            generateIndexes { model | language = language }

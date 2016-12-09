@@ -1,7 +1,7 @@
 module View exposing (view)
 
 import Html exposing (Html, h1, label, button, div, text, input)
-import Html.Attributes exposing (for, type_, value, checked)
+import Html.Attributes exposing (attribute, for, type_, value, checked)
 import Html.Attributes as H exposing (min, max)
 import Html.Events exposing (onClick, onInput)
 import Message exposing (Msg(..))
@@ -12,6 +12,7 @@ import Passphrase exposing (generatePassphrase)
 import Html.CssHelpers as Hlp
 import Styles.Styles as Styles
 import Styles.Classes as Cls
+import Navbar
 
 
 { id, class, classList } =
@@ -25,7 +26,7 @@ view model =
             Internationalization.getText model.language
     in
         div []
-            [ h1 [] [ text (t Title) ]
+            [ Navbar.navbar model
             , div [ class [ "form-group", "col-md-6" ] ]
                 [ label [ for "inputNumberOfWords" ] [ text (t NumberOfWords) ]
                 , input
