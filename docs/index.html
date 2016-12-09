@@ -21,7 +21,12 @@
       const model = localStorage.getItem('model');
       const startingModel = model ? JSON.parse(model) : null;
 
-      const elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
+      var elmApp;
+      try {
+        elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
+      } catch {
+        elmApp = Elm.Main.embed(document.getElementById('container'), null);
+      }
 
       elmApp.ports.setStorage.subscribe(function (state) {
         localStorage.setItem('model', JSON.stringify(state));
