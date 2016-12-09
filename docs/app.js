@@ -14126,6 +14126,89 @@ var _user$project$GetWords$getWords = A2(
 	_user$project$Message$NewWords,
 	A2(_elm_lang$http$Http$get, 'nrk.json', _user$project$GetWords$parseWords));
 
+var _user$project$Translations_Types$AvoidNordicCharacters = {ctor: 'AvoidNordicCharacters'};
+var _user$project$Translations_Types$SatisfyPwRules = {ctor: 'SatisfyPwRules'};
+var _user$project$Translations_Types$InsertSpaces = {ctor: 'InsertSpaces'};
+var _user$project$Translations_Types$Settings = {ctor: 'Settings'};
+var _user$project$Translations_Types$NumberOfWords = {ctor: 'NumberOfWords'};
+var _user$project$Translations_Types$PleaseWait = {ctor: 'PleaseWait'};
+var _user$project$Translations_Types$Title = {ctor: 'Title'};
+
+var _user$project$Translations_Norwegian$getText = function (label) {
+	var _p0 = label;
+	switch (_p0.ctor) {
+		case 'Title':
+			return _elm_lang$core$Maybe$Just('Passfrase');
+		case 'PleaseWait':
+			return _elm_lang$core$Maybe$Just('Vennligst vent...');
+		case 'NumberOfWords':
+			return _elm_lang$core$Maybe$Just('Antall ord');
+		case 'Settings':
+			return _elm_lang$core$Maybe$Just('Innstillinger');
+		case 'InsertSpaces':
+			return _elm_lang$core$Maybe$Just('Sett inn mellomrom');
+		case 'SatisfyPwRules':
+			return _elm_lang$core$Maybe$Just('Oppfyll tullete passordkrav');
+		default:
+			return _elm_lang$core$Maybe$Just('Unngå æ/ø/å');
+	}
+};
+
+var _user$project$Translations_English$getText = function (label) {
+	var _p0 = label;
+	switch (_p0.ctor) {
+		case 'Title':
+			return _elm_lang$core$Maybe$Just('Passfrase');
+		case 'PleaseWait':
+			return _elm_lang$core$Maybe$Just('Please wait...');
+		case 'NumberOfWords':
+			return _elm_lang$core$Maybe$Just('Number of words');
+		case 'Settings':
+			return _elm_lang$core$Maybe$Just('Settings');
+		case 'InsertSpaces':
+			return _elm_lang$core$Maybe$Just('Insert spaces');
+		case 'SatisfyPwRules':
+			return _elm_lang$core$Maybe$Just('Satisfy silly password rules');
+		default:
+			return _elm_lang$core$Maybe$Just('Avoid nordic characters');
+	}
+};
+
+var _user$project$Internationalization$textMap = _elm_lang$core$Dict$fromList(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'no', _1: _user$project$Translations_Norwegian$getText},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'en', _1: _user$project$Translations_English$getText},
+			_1: {ctor: '[]'}
+		}
+	});
+var _user$project$Internationalization$getText = F2(
+	function (lang, label) {
+		var englishTexts = A2(_elm_lang$core$Dict$get, 'en', _user$project$Internationalization$textMap);
+		var localTexts = A2(_elm_lang$core$Dict$get, lang, _user$project$Internationalization$textMap);
+		return A2(
+			_elm_lang$core$Maybe$withDefault,
+			A2(
+				_elm_lang$core$Maybe$withDefault,
+				_elm_lang$core$Basics$toString(label),
+				A2(
+					_elm_lang$core$Maybe$andThen,
+					F2(
+						function (x, y) {
+							return y(x);
+						})(label),
+					englishTexts)),
+			A2(
+				_elm_lang$core$Maybe$andThen,
+				F2(
+					function (x, y) {
+						return y(x);
+					})(label),
+				localTexts));
+	});
+
 var _user$project$Model$init = function (mayModel) {
 	var _p0 = mayModel;
 	if (_p0.ctor === 'Just') {
@@ -14196,15 +14279,16 @@ var _user$project$Model$init = function (mayModel) {
 							_1: {ctor: '[]'}
 						}
 					}
-				}
+				},
+				language: 'no'
 			},
 			_1: _user$project$GetWords$getWords
 		};
 	}
 };
-var _user$project$Model$Model = F6(
-	function (a, b, c, d, e, f) {
-		return {insertSpaces: a, satisfyPwRules: b, avoidNordicCharacters: c, numberOfWords: d, passphraseIndexes: e, words: f};
+var _user$project$Model$Model = F7(
+	function (a, b, c, d, e, f, g) {
+		return {insertSpaces: a, satisfyPwRules: b, avoidNordicCharacters: c, numberOfWords: d, passphraseIndexes: e, words: f, language: g};
 	});
 
 var _user$project$Update$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
@@ -14222,7 +14306,8 @@ var _user$project$Update$setStorage = _elm_lang$core$Native_Platform.outgoingPor
 			words: _elm_lang$core$Native_List.toArray(v.words).map(
 				function (v) {
 					return v;
-				})
+				}),
+			language: v.language
 		};
 	});
 var _user$project$Update$generateIndexes = function (model) {
@@ -14485,6 +14570,7 @@ var _user$project$View$checkbox = F3(
 			});
 	});
 var _user$project$View$view = function (model) {
+	var t = _user$project$Internationalization$getText(model.language);
 	return A2(
 		_elm_lang$html$Html$div,
 		{ctor: '[]'},
@@ -14495,7 +14581,8 @@ var _user$project$View$view = function (model) {
 				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html$text('Passfrase'),
+					_0: _elm_lang$html$Html$text(
+						t(_user$project$Translations_Types$Title)),
 					_1: {ctor: '[]'}
 				}),
 			_1: {
@@ -14527,7 +14614,8 @@ var _user$project$View$view = function (model) {
 							},
 							{
 								ctor: '::',
-								_0: _elm_lang$html$Html$text('Antall ord'),
+								_0: _elm_lang$html$Html$text(
+									t(_user$project$Translations_Types$NumberOfWords)),
 								_1: {ctor: '[]'}
 							}),
 						_1: {
@@ -14598,18 +14686,31 @@ var _user$project$View$view = function (model) {
 								{ctor: '[]'},
 								{
 									ctor: '::',
-									_0: _elm_lang$html$Html$text('Innstillinger'),
+									_0: _elm_lang$html$Html$text(
+										t(_user$project$Translations_Types$Settings)),
 									_1: {ctor: '[]'}
 								}),
 							_1: {
 								ctor: '::',
-								_0: A3(_user$project$View$checkbox, 'Sett inn mellomrom', _user$project$Message$ToggleSpaces, model.insertSpaces),
+								_0: A3(
+									_user$project$View$checkbox,
+									t(_user$project$Translations_Types$InsertSpaces),
+									_user$project$Message$ToggleSpaces,
+									model.insertSpaces),
 								_1: {
 									ctor: '::',
-									_0: A3(_user$project$View$checkbox, 'Oppfyll tullete passordkrav', _user$project$Message$TogglePwRules, model.satisfyPwRules),
+									_0: A3(
+										_user$project$View$checkbox,
+										t(_user$project$Translations_Types$SatisfyPwRules),
+										_user$project$Message$TogglePwRules,
+										model.satisfyPwRules),
 									_1: {
 										ctor: '::',
-										_0: A3(_user$project$View$checkbox, 'Unngå æ/ø/å', _user$project$Message$ToggleAvoidNordicCharacters, model.avoidNordicCharacters),
+										_0: A3(
+											_user$project$View$checkbox,
+											t(_user$project$Translations_Types$AvoidNordicCharacters),
+											_user$project$Message$ToggleAvoidNordicCharacters,
+											model.avoidNordicCharacters),
 										_1: {ctor: '[]'}
 									}
 								}
@@ -14720,32 +14821,37 @@ var _user$project$Main$main = _elm_lang$html$Html$programWithFlags(
 								function (insertSpaces) {
 									return A2(
 										_elm_lang$core$Json_Decode$andThen,
-										function (numberOfWords) {
+										function (language) {
 											return A2(
 												_elm_lang$core$Json_Decode$andThen,
-												function (passphraseIndexes) {
+												function (numberOfWords) {
 													return A2(
 														_elm_lang$core$Json_Decode$andThen,
-														function (satisfyPwRules) {
+														function (passphraseIndexes) {
 															return A2(
 																_elm_lang$core$Json_Decode$andThen,
-																function (words) {
-																	return _elm_lang$core$Json_Decode$succeed(
-																		{avoidNordicCharacters: avoidNordicCharacters, insertSpaces: insertSpaces, numberOfWords: numberOfWords, passphraseIndexes: passphraseIndexes, satisfyPwRules: satisfyPwRules, words: words});
+																function (satisfyPwRules) {
+																	return A2(
+																		_elm_lang$core$Json_Decode$andThen,
+																		function (words) {
+																			return _elm_lang$core$Json_Decode$succeed(
+																				{avoidNordicCharacters: avoidNordicCharacters, insertSpaces: insertSpaces, language: language, numberOfWords: numberOfWords, passphraseIndexes: passphraseIndexes, satisfyPwRules: satisfyPwRules, words: words});
+																		},
+																		A2(
+																			_elm_lang$core$Json_Decode$field,
+																			'words',
+																			_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string)));
 																},
-																A2(
-																	_elm_lang$core$Json_Decode$field,
-																	'words',
-																	_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string)));
+																A2(_elm_lang$core$Json_Decode$field, 'satisfyPwRules', _elm_lang$core$Json_Decode$bool));
 														},
-														A2(_elm_lang$core$Json_Decode$field, 'satisfyPwRules', _elm_lang$core$Json_Decode$bool));
+														A2(
+															_elm_lang$core$Json_Decode$field,
+															'passphraseIndexes',
+															_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$int)));
 												},
-												A2(
-													_elm_lang$core$Json_Decode$field,
-													'passphraseIndexes',
-													_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$int)));
+												A2(_elm_lang$core$Json_Decode$field, 'numberOfWords', _elm_lang$core$Json_Decode$int));
 										},
-										A2(_elm_lang$core$Json_Decode$field, 'numberOfWords', _elm_lang$core$Json_Decode$int));
+										A2(_elm_lang$core$Json_Decode$field, 'language', _elm_lang$core$Json_Decode$string));
 								},
 								A2(_elm_lang$core$Json_Decode$field, 'insertSpaces', _elm_lang$core$Json_Decode$bool));
 						},

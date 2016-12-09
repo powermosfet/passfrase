@@ -11,6 +11,7 @@ type alias Model =
     , numberOfWords : Int
     , passphraseIndexes : List Int
     , words : List String
+    , language : String
     }
 
 
@@ -32,6 +33,7 @@ init mayModel =
               , numberOfWords = 4
               , passphraseIndexes = [ 0, 1, 2 ]
               , words = [ "Vennligst", "vent", "..." ]
+              , language = "no"
               }
             , getWords
             )

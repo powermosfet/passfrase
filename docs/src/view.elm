@@ -6,6 +6,8 @@ import Html.Attributes as H exposing (min, max)
 import Html.Events exposing (onClick, onInput)
 import Message exposing (Msg(..))
 import Model exposing (Model)
+import Internationalization
+import Translations.Types exposing (..)
 import Passphrase exposing (generatePassphrase)
 import Html.CssHelpers as Hlp
 import Styles.Styles as Styles
@@ -18,35 +20,39 @@ import Styles.Classes as Cls
 
 view : Model -> Html Msg
 view model =
-    div []
-        [ h1 [] [ text "Passfrase" ]
-        , div [ class [ "form-group", "col-md-6" ] ]
-            [ label [ for "inputNumberOfWords" ] [ text "Antall ord" ]
-            , input
-                [ type_ "range"
-                , H.min "1"
-                , H.max "10"
-                , class [ "form-control" ]
-                , id "inputNumberOfWords"
-                , value (toString model.numberOfWords)
-                , onInput ChangeNumberOfWords
+    let
+        t =
+            Internationalization.getText model.language
+    in
+        div []
+            [ h1 [] [ text (t Title) ]
+            , div [ class [ "form-group", "col-md-6" ] ]
+                [ label [ for "inputNumberOfWords" ] [ text (t NumberOfWords) ]
+                , input
+                    [ type_ "range"
+                    , H.min "1"
+                    , H.max "10"
+                    , class [ "form-control" ]
+                    , id "inputNumberOfWords"
+                    , value (toString model.numberOfWords)
+                    , onInput ChangeNumberOfWords
+                    ]
+                    []
                 ]
-                []
-            ]
-        , div [ class [ "form-group", "col-md-6" ] ]
-            [ label [] [ text "Innstillinger" ]
-            , checkbox "Sett inn mellomrom" ToggleSpaces model.insertSpaces
-            , checkbox "Oppfyll tullete passordkrav" TogglePwRules model.satisfyPwRules
-            , checkbox "Unngå æ/ø/å" ToggleAvoidNordicCharacters model.avoidNordicCharacters
-            ]
-        , div [ class [ Cls.PassphrasePanel ] ]
-            [ div [ class [ "panel", "panel-default", "col-md-12" ] ]
-                [ div [ class [ "panel-body" ] ]
-                    [ h1 [ class [ Cls.PassphraseText ] ] [ text (generatePassphrase model) ]
+            , div [ class [ "form-group", "col-md-6" ] ]
+                [ label [] [ text (t Settings) ]
+                , checkbox (t InsertSpaces) ToggleSpaces model.insertSpaces
+                , checkbox (t SatisfyPwRules) TogglePwRules model.satisfyPwRules
+                , checkbox (t AvoidNordicCharacters) ToggleAvoidNordicCharacters model.avoidNordicCharacters
+                ]
+            , div [ class [ Cls.PassphrasePanel ] ]
+                [ div [ class [ "panel", "panel-default", "col-md-12" ] ]
+                    [ div [ class [ "panel-body" ] ]
+                        [ h1 [ class [ Cls.PassphraseText ] ] [ text (generatePassphrase model) ]
+                        ]
                     ]
                 ]
             ]
-        ]
 
 
 checkbox : String -> Msg -> Bool -> Html Msg
