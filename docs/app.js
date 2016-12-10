@@ -14288,7 +14288,7 @@ var _user$project$Model$init = function (mayModel) {
 						}
 					}
 				},
-				language: 'no'
+				language: 'en'
 			},
 			_1: _user$project$GetWords$getWords
 		};
@@ -14715,21 +14715,17 @@ var _user$project$Navbar$navbar = function (model) {
 					_1: {
 						ctor: '::',
 						_0: A2(
-							_elm_lang$html$Html$ul,
+							_elm_lang$html$Html$div,
 							{
 								ctor: '::',
 								_0: _user$project$Navbar$class(
 									{
 										ctor: '::',
-										_0: 'nav',
+										_0: 'collapse',
 										_1: {
 											ctor: '::',
-											_0: 'navbar-nav',
-											_1: {
-												ctor: '::',
-												_0: 'navbar-right',
-												_1: {ctor: '[]'}
-											}
+											_0: 'navbar-collapse',
+											_1: {ctor: '[]'}
 										}
 									}),
 								_1: {ctor: '[]'}
@@ -14737,137 +14733,161 @@ var _user$project$Navbar$navbar = function (model) {
 							{
 								ctor: '::',
 								_0: A2(
-									_elm_lang$html$Html$li,
+									_elm_lang$html$Html$ul,
 									{
 										ctor: '::',
 										_0: _user$project$Navbar$class(
 											{
 												ctor: '::',
-												_0: 'dropdown',
-												_1: {ctor: '[]'}
+												_0: 'nav',
+												_1: {
+													ctor: '::',
+													_0: 'navbar-nav',
+													_1: {
+														ctor: '::',
+														_0: 'navbar-right',
+														_1: {ctor: '[]'}
+													}
+												}
 											}),
 										_1: {ctor: '[]'}
 									},
 									{
 										ctor: '::',
 										_0: A2(
-											_elm_lang$html$Html$a,
+											_elm_lang$html$Html$li,
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html_Attributes$href('#'),
-												_1: {
-													ctor: '::',
-													_0: _user$project$Navbar$class(
-														{
-															ctor: '::',
-															_0: 'dropdown-toggle',
-															_1: {ctor: '[]'}
-														}),
-													_1: {
+												_0: _user$project$Navbar$class(
+													{
 														ctor: '::',
-														_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'dropdown'),
-														_1: {
-															ctor: '::',
-															_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'button'),
-															_1: {
-																ctor: '::',
-																_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
-																_1: {
-																	ctor: '::',
-																	_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-expanded', 'false'),
-																	_1: {ctor: '[]'}
-																}
-															}
-														}
-													}
-												}
+														_0: 'dropdown',
+														_1: {ctor: '[]'}
+													}),
+												_1: {ctor: '[]'}
 											},
 											{
 												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													t(_user$project$Translations_Types$CurrentLanguage)),
+												_0: A2(
+													_elm_lang$html$Html$a,
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html_Attributes$href('#'),
+														_1: {
+															ctor: '::',
+															_0: _user$project$Navbar$class(
+																{
+																	ctor: '::',
+																	_0: 'dropdown-toggle',
+																	_1: {ctor: '[]'}
+																}),
+															_1: {
+																ctor: '::',
+																_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'dropdown'),
+																_1: {
+																	ctor: '::',
+																	_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'button'),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
+																		_1: {
+																			ctor: '::',
+																			_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-expanded', 'false'),
+																			_1: {ctor: '[]'}
+																		}
+																	}
+																}
+															}
+														}
+													},
+													{
+														ctor: '::',
+														_0: _elm_lang$html$Html$text(
+															t(_user$project$Translations_Types$CurrentLanguage)),
+														_1: {
+															ctor: '::',
+															_0: A2(
+																_elm_lang$html$Html$span,
+																{
+																	ctor: '::',
+																	_0: _user$project$Navbar$class(
+																		{
+																			ctor: '::',
+																			_0: 'caret',
+																			_1: {ctor: '[]'}
+																		}),
+																	_1: {ctor: '[]'}
+																},
+																{ctor: '[]'}),
+															_1: {ctor: '[]'}
+														}
+													}),
 												_1: {
 													ctor: '::',
 													_0: A2(
-														_elm_lang$html$Html$span,
+														_elm_lang$html$Html$ul,
 														{
 															ctor: '::',
 															_0: _user$project$Navbar$class(
 																{
 																	ctor: '::',
-																	_0: 'caret',
+																	_0: 'dropdown-menu',
 																	_1: {ctor: '[]'}
 																}),
 															_1: {ctor: '[]'}
 														},
-														{ctor: '[]'}),
-													_1: {ctor: '[]'}
-												}
-											}),
-										_1: {
-											ctor: '::',
-											_0: A2(
-												_elm_lang$html$Html$ul,
-												{
-													ctor: '::',
-													_0: _user$project$Navbar$class(
-														{
-															ctor: '::',
-															_0: 'dropdown-menu',
-															_1: {ctor: '[]'}
-														}),
-													_1: {ctor: '[]'}
-												},
-												{
-													ctor: '::',
-													_0: A2(
-														_elm_lang$html$Html$li,
-														{ctor: '[]'},
 														{
 															ctor: '::',
 															_0: A2(
-																_elm_lang$html$Html$a,
+																_elm_lang$html$Html$li,
+																{ctor: '[]'},
 																{
 																	ctor: '::',
-																	_0: _elm_lang$html$Html_Attributes$href('#'),
+																	_0: A2(
+																		_elm_lang$html$Html$a,
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html_Attributes$href('#'),
+																			_1: {
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Events$onClick(
+																					_user$project$Message$ChangeLanguage('no')),
+																				_1: {ctor: '[]'}
+																			}
+																		},
+																		{
+																			ctor: '::',
+																			_0: _elm_lang$html$Html$text('Norsk'),
+																			_1: {ctor: '[]'}
+																		}),
 																	_1: {
 																		ctor: '::',
-																		_0: _elm_lang$html$Html_Events$onClick(
-																			_user$project$Message$ChangeLanguage('no')),
+																		_0: A2(
+																			_elm_lang$html$Html$a,
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$href('#'),
+																				_1: {
+																					ctor: '::',
+																					_0: _elm_lang$html$Html_Events$onClick(
+																						_user$project$Message$ChangeLanguage('en')),
+																					_1: {ctor: '[]'}
+																				}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html$text('English'),
+																				_1: {ctor: '[]'}
+																			}),
 																		_1: {ctor: '[]'}
 																	}
-																},
-																{
-																	ctor: '::',
-																	_0: _elm_lang$html$Html$text('Norsk'),
-																	_1: {ctor: '[]'}
 																}),
-															_1: {
-																ctor: '::',
-																_0: A2(
-																	_elm_lang$html$Html$a,
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html_Attributes$href('#'),
-																		_1: {
-																			ctor: '::',
-																			_0: _elm_lang$html$Html_Events$onClick(
-																				_user$project$Message$ChangeLanguage('en')),
-																			_1: {ctor: '[]'}
-																		}
-																	},
-																	{
-																		ctor: '::',
-																		_0: _elm_lang$html$Html$text('English'),
-																		_1: {ctor: '[]'}
-																	}),
-																_1: {ctor: '[]'}
-															}
+															_1: {ctor: '[]'}
 														}),
 													_1: {ctor: '[]'}
-												}),
-											_1: {ctor: '[]'}
-										}
+												}
+											}),
+										_1: {ctor: '[]'}
 									}),
 								_1: {ctor: '[]'}
 							}),

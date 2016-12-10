@@ -47,26 +47,29 @@ navbar model =
                         ]
                         [ text (t Title) ]
                     ]
-                , ul
-                    [ class [ "nav", "navbar-nav", "navbar-right" ] ]
-                    [ li
-                        [ class [ "dropdown" ] ]
-                        [ a
-                            [ href "#"
-                            , class [ "dropdown-toggle" ]
-                            , attribute "data-toggle" "dropdown"
-                            , attribute "role" "button"
-                            , attribute "aria-haspopup" "true"
-                            , attribute "aria-expanded" "false"
-                            ]
-                            [ text (t CurrentLanguage)
-                            , span [ class [ "caret" ] ] []
-                            ]
-                        , ul
-                            [ class [ "dropdown-menu" ] ]
-                            [ li []
-                                [ a [ href "#", onClick (ChangeLanguage "no") ] [ text "Norsk" ]
-                                , a [ href "#", onClick (ChangeLanguage "en") ] [ text "English" ]
+                , div
+                    [ class [ "collapse", "navbar-collapse" ] ]
+                    [ ul
+                        [ class [ "nav", "navbar-nav", "navbar-right" ] ]
+                        [ li
+                            [ class [ "dropdown" ] ]
+                            [ a
+                                [ href "#"
+                                , class [ "dropdown-toggle" ]
+                                , attribute "data-toggle" "dropdown"
+                                , attribute "role" "button"
+                                , attribute "aria-haspopup" "true"
+                                , attribute "aria-expanded" "false"
+                                ]
+                                [ text (t CurrentLanguage)
+                                , span [ class [ "caret" ] ] []
+                                ]
+                            , ul
+                                [ class [ "dropdown-menu" ] ]
+                                [ li []
+                                    [ a [ href "#", onClick (ChangeLanguage "no") ] [ text "Norsk" ]
+                                    , a [ href "#", onClick (ChangeLanguage "en") ] [ text "English" ]
+                                    ]
                                 ]
                             ]
                         ]
