@@ -33,7 +33,7 @@ navbar model =
                         [ type_ "button"
                         , class [ "navbar-toggle", "collapsed" ]
                         , attribute "data-toggle" "collapse"
-                        , attribute "data-target" "#bs-example-navbar-collapse-1"
+                        , attribute "data-target" "#bs-navbar-collapsible"
                         , attribute "aria-expanded" "false"
                         ]
                         [ span [ class [ "sr-only" ] ] [ text "Toggle navigation" ]
@@ -48,7 +48,9 @@ navbar model =
                         [ text (t Title) ]
                     ]
                 , div
-                    [ class [ "collapse", "navbar-collapse" ] ]
+                    [ class [ "collapse", "navbar-collapse" ]
+                    , id "bs-navbar-collapsible"
+                    ]
                     [ ul
                         [ class [ "nav", "navbar-nav", "navbar-right" ] ]
                         [ li

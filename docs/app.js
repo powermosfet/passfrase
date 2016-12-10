@@ -14606,7 +14606,7 @@ var _user$project$Navbar$navbar = function (model) {
 											_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'collapse'),
 											_1: {
 												ctor: '::',
-												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-target', '#bs-example-navbar-collapse-1'),
+												_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-target', '#bs-navbar-collapsible'),
 												_1: {
 													ctor: '::',
 													_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-expanded', 'false'),
@@ -14728,7 +14728,11 @@ var _user$project$Navbar$navbar = function (model) {
 											_1: {ctor: '[]'}
 										}
 									}),
-								_1: {ctor: '[]'}
+								_1: {
+									ctor: '::',
+									_0: _user$project$Navbar$id('bs-navbar-collapsible'),
+									_1: {ctor: '[]'}
+								}
 							},
 							{
 								ctor: '::',
