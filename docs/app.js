@@ -14106,6 +14106,20 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
+var _user$project$Dictionary$getUrl = function (dict) {
+	var _p0 = dict;
+	if (_p0.ctor === 'Nrk') {
+		return 'nrk.json';
+	} else {
+		return 'programmingbooks.json';
+	}
+};
+var _user$project$Dictionary$ProgrammingBooks = {ctor: 'ProgrammingBooks'};
+var _user$project$Dictionary$Nrk = {ctor: 'Nrk'};
+
+var _user$project$Message$ChangeDictionary = function (a) {
+	return {ctor: 'ChangeDictionary', _0: a};
+};
 var _user$project$Message$ChangeLanguage = function (a) {
 	return {ctor: 'ChangeLanguage', _0: a};
 };
@@ -14124,10 +14138,15 @@ var _user$project$Message$TogglePwRules = {ctor: 'TogglePwRules'};
 var _user$project$Message$ToggleSpaces = {ctor: 'ToggleSpaces'};
 
 var _user$project$GetWords$parseWords = _elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string);
-var _user$project$GetWords$getWords = A2(
-	_elm_lang$http$Http$send,
-	_user$project$Message$NewWords,
-	A2(_elm_lang$http$Http$get, 'nrk.json', _user$project$GetWords$parseWords));
+var _user$project$GetWords$getWords = function (dict) {
+	return A2(
+		_elm_lang$http$Http$send,
+		_user$project$Message$NewWords,
+		A2(
+			_elm_lang$http$Http$get,
+			_user$project$Dictionary$getUrl(dict),
+			_user$project$GetWords$parseWords));
+};
 
 var _user$project$Translations_Types$AvoidNordicCharacters = {ctor: 'AvoidNordicCharacters'};
 var _user$project$Translations_Types$SatisfyPwRules = {ctor: 'SatisfyPwRules'};
@@ -14217,107 +14236,49 @@ var _user$project$Internationalization$getText = F2(
 				localTexts));
 	});
 
-var _user$project$Model$init = function (mayModel) {
-	var _p0 = mayModel;
-	if (_p0.ctor === 'Just') {
-		return {
-			ctor: '_Tuple2',
-			_0: _elm_lang$core$Native_Utils.update(
-				_p0._0,
-				{
-					words: {
-						ctor: '::',
-						_0: 'Vennligst',
-						_1: {
-							ctor: '::',
-							_0: 'vent',
-							_1: {
-								ctor: '::',
-								_0: '...',
-								_1: {ctor: '[]'}
-							}
-						}
-					},
-					passphraseIndexes: {
-						ctor: '::',
-						_0: 0,
-						_1: {
-							ctor: '::',
-							_0: 1,
-							_1: {
-								ctor: '::',
-								_0: 2,
-								_1: {ctor: '[]'}
-							}
-						}
-					}
-				}),
-			_1: _user$project$GetWords$getWords
-		};
-	} else {
-		return {
-			ctor: '_Tuple2',
-			_0: {
-				insertSpaces: true,
-				satisfyPwRules: false,
-				avoidNordicCharacters: false,
-				numberOfWords: 4,
-				passphraseIndexes: {
+var _user$project$Model$init = {
+	ctor: '_Tuple2',
+	_0: {
+		insertSpaces: true,
+		satisfyPwRules: false,
+		avoidNordicCharacters: false,
+		numberOfWords: 4,
+		passphraseIndexes: {
+			ctor: '::',
+			_0: 0,
+			_1: {
+				ctor: '::',
+				_0: 1,
+				_1: {
 					ctor: '::',
-					_0: 0,
-					_1: {
-						ctor: '::',
-						_0: 1,
-						_1: {
-							ctor: '::',
-							_0: 2,
-							_1: {ctor: '[]'}
-						}
-					}
-				},
-				words: {
+					_0: 2,
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		words: {
+			ctor: '::',
+			_0: 'Vennligst',
+			_1: {
+				ctor: '::',
+				_0: 'vent',
+				_1: {
 					ctor: '::',
-					_0: 'Vennligst',
-					_1: {
-						ctor: '::',
-						_0: 'vent',
-						_1: {
-							ctor: '::',
-							_0: '...',
-							_1: {ctor: '[]'}
-						}
-					}
-				},
-				language: 'en'
-			},
-			_1: _user$project$GetWords$getWords
-		};
-	}
+					_0: '...',
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		dictionary: _user$project$Dictionary$ProgrammingBooks,
+		language: 'en'
+	},
+	_1: _user$project$GetWords$getWords(_user$project$Dictionary$ProgrammingBooks)
 };
-var _user$project$Model$Model = F7(
-	function (a, b, c, d, e, f, g) {
-		return {insertSpaces: a, satisfyPwRules: b, avoidNordicCharacters: c, numberOfWords: d, passphraseIndexes: e, words: f, language: g};
+var _user$project$Model$Model = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {insertSpaces: a, satisfyPwRules: b, avoidNordicCharacters: c, numberOfWords: d, passphraseIndexes: e, words: f, language: g, dictionary: h};
 	});
 
-var _user$project$Update$setStorage = _elm_lang$core$Native_Platform.outgoingPort(
-	'setStorage',
-	function (v) {
-		return {
-			insertSpaces: v.insertSpaces,
-			satisfyPwRules: v.satisfyPwRules,
-			avoidNordicCharacters: v.avoidNordicCharacters,
-			numberOfWords: v.numberOfWords,
-			passphraseIndexes: _elm_lang$core$Native_List.toArray(v.passphraseIndexes).map(
-				function (v) {
-					return v;
-				}),
-			words: _elm_lang$core$Native_List.toArray(v.words).map(
-				function (v) {
-					return v;
-				}),
-			language: v.language
-		};
-	});
 var _user$project$Update$generateIndexes = function (model) {
 	var maxIndex = _elm_lang$core$List$length(model.words) - 1;
 	return {
@@ -14335,12 +14296,7 @@ var _user$project$Update$generateIndexes = function (model) {
 						A2(_elm_lang$core$Random$int, 0, maxIndex))),
 				_1: {
 					ctor: '::',
-					_0: _user$project$Update$setStorage(
-						_elm_lang$core$Native_Utils.update(
-							model,
-							{
-								words: {ctor: '[]'}
-							})),
+					_0: _elm_lang$core$Platform_Cmd$none,
 					_1: {ctor: '[]'}
 				}
 			})
@@ -14366,14 +14322,10 @@ var _user$project$Update$update = F2(
 						model,
 						{avoidNordicCharacters: !model.avoidNordicCharacters}));
 			case 'ChangeNumberOfWords':
-				var n = function () {
-					var _p1 = _elm_lang$core$String$toInt(_p0._0);
-					if (_p1.ctor === 'Err') {
-						return 0;
-					} else {
-						return _p1._0;
-					}
-				}();
+				var n = A2(
+					_elm_lang$core$Result$withDefault,
+					0,
+					_elm_lang$core$String$toInt(_p0._0));
 				return _user$project$Update$generateIndexes(
 					_elm_lang$core$Native_Utils.update(
 						model,
@@ -14388,7 +14340,11 @@ var _user$project$Update$update = F2(
 				};
 			case 'NewWords':
 				if (_p0._0.ctor === 'Err') {
-					return {ctor: '_Tuple2', _0: model, _1: _user$project$GetWords$getWords};
+					return {
+						ctor: '_Tuple2',
+						_0: model,
+						_1: _user$project$GetWords$getWords(model.dictionary)
+					};
 				} else {
 					return _user$project$Update$generateIndexes(
 						_elm_lang$core$Native_Utils.update(
@@ -14397,11 +14353,20 @@ var _user$project$Update$update = F2(
 				}
 			case 'NewPassphrase':
 				return _user$project$Update$generateIndexes(model);
-			default:
+			case 'ChangeLanguage':
 				return _user$project$Update$generateIndexes(
 					_elm_lang$core$Native_Utils.update(
 						model,
 						{language: _p0._0}));
+			default:
+				var _p1 = _p0._0;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{dictionary: _p1}),
+					_1: _user$project$GetWords$getWords(_p1)
+				};
 		}
 	});
 
@@ -15177,63 +15142,8 @@ var _user$project$View$view = function (model) {
 var _user$project$Main$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$none;
 };
-var _user$project$Main$main = _elm_lang$html$Html$programWithFlags(
-	{init: _user$project$Model$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})(
-	_elm_lang$core$Json_Decode$oneOf(
-		{
-			ctor: '::',
-			_0: _elm_lang$core$Json_Decode$null(_elm_lang$core$Maybe$Nothing),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$core$Json_Decode$map,
-					_elm_lang$core$Maybe$Just,
-					A2(
-						_elm_lang$core$Json_Decode$andThen,
-						function (avoidNordicCharacters) {
-							return A2(
-								_elm_lang$core$Json_Decode$andThen,
-								function (insertSpaces) {
-									return A2(
-										_elm_lang$core$Json_Decode$andThen,
-										function (language) {
-											return A2(
-												_elm_lang$core$Json_Decode$andThen,
-												function (numberOfWords) {
-													return A2(
-														_elm_lang$core$Json_Decode$andThen,
-														function (passphraseIndexes) {
-															return A2(
-																_elm_lang$core$Json_Decode$andThen,
-																function (satisfyPwRules) {
-																	return A2(
-																		_elm_lang$core$Json_Decode$andThen,
-																		function (words) {
-																			return _elm_lang$core$Json_Decode$succeed(
-																				{avoidNordicCharacters: avoidNordicCharacters, insertSpaces: insertSpaces, language: language, numberOfWords: numberOfWords, passphraseIndexes: passphraseIndexes, satisfyPwRules: satisfyPwRules, words: words});
-																		},
-																		A2(
-																			_elm_lang$core$Json_Decode$field,
-																			'words',
-																			_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$string)));
-																},
-																A2(_elm_lang$core$Json_Decode$field, 'satisfyPwRules', _elm_lang$core$Json_Decode$bool));
-														},
-														A2(
-															_elm_lang$core$Json_Decode$field,
-															'passphraseIndexes',
-															_elm_lang$core$Json_Decode$list(_elm_lang$core$Json_Decode$int)));
-												},
-												A2(_elm_lang$core$Json_Decode$field, 'numberOfWords', _elm_lang$core$Json_Decode$int));
-										},
-										A2(_elm_lang$core$Json_Decode$field, 'language', _elm_lang$core$Json_Decode$string));
-								},
-								A2(_elm_lang$core$Json_Decode$field, 'insertSpaces', _elm_lang$core$Json_Decode$bool));
-						},
-						A2(_elm_lang$core$Json_Decode$field, 'avoidNordicCharacters', _elm_lang$core$Json_Decode$bool))),
-				_1: {ctor: '[]'}
-			}
-		}));
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{init: _user$project$Model$init, view: _user$project$View$view, update: _user$project$Update$update, subscriptions: _user$project$Main$subscriptions})();
 
 var Elm = {};
 Elm['Main'] = Elm['Main'] || {};

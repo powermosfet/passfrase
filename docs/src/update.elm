@@ -8,7 +8,7 @@ import GetWords exposing (getWords)
 import Platform.Cmd as Cmd exposing (batch)
 
 
-port setStorage : Model -> Cmd msg
+-- port setStorage : Model -> Cmd msg
 
 
 generateIndexes : Model -> ( Model, Cmd Msg )
@@ -20,7 +20,7 @@ generateIndexes model =
         ( model
         , batch
             [ Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex))
-            , setStorage { model | words = [] }
+            , Cmd.none -- setStorage { model | words = [] }
             ]
         )
 
@@ -40,12 +40,7 @@ update msg model =
         ChangeNumberOfWords strN ->
             let
                 n =
-                    case (String.toInt strN) of
-                        Err _ ->
-                            0
-
-                        Ok x ->
-                            x
+                    Result.withDefault 0 (String.toInt strN)
             in
                 generateIndexes { model | numberOfWords = n }
 
@@ -53,7 +48,7 @@ update msg model =
             ( { model | passphraseIndexes = indexes }, Cmd.none )
 
         NewWords (Err _) ->
-            ( model, getWords )
+            ( model, getWords model.dictionary )
 
         NewWords (Ok words) ->
             generateIndexes { model | words = words }
@@ -63,3 +58,6 @@ update msg model =
 
         ChangeLanguage language ->
             generateIndexes { model | language = language }
+
+        ChangeDictionary dictionary ->
+            ( { model | dictionary = dictionary }, getWords dictionary )

@@ -8,7 +8,7 @@ import View
 
 
 main =
-    Html.programWithFlags { init = Model.init, view = View.view, update = Update.update, subscriptions = subscriptions }
+    Html.program { init = Model.init, view = View.view, update = Update.update, subscriptions = subscriptions }
 
 
 subscriptions : Model.Model -> Sub Message.Msg
