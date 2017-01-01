@@ -7,6 +7,7 @@ import Html.Events exposing (onClick, onInput)
 import Message exposing (Msg(..))
 import Model exposing (Model)
 import Internationalization
+import Dictionary exposing (Dictionary(..), getDescription)
 import Translations.Types exposing (..)
 import Html.CssHelpers as Hlp
 import Styles.Styles as Styles
@@ -71,6 +72,27 @@ navbar model =
                                 [ li []
                                     [ a [ href "#", onClick (ChangeLanguage "no") ] [ text "Norsk" ]
                                     , a [ href "#", onClick (ChangeLanguage "en") ] [ text "English" ]
+                                    ]
+                                ]
+                            ]
+                        , li
+                            [ class [ "dropdown" ] ]
+                            [ a
+                                [ href "#"
+                                , class [ "dropdown-toggle" ]
+                                , attribute "data-toggle" "dropdown"
+                                , attribute "role" "button"
+                                , attribute "aria-haspopup" "true"
+                                , attribute "aria-expanded" "false"
+                                ]
+                                [ text (getDescription model.dictionary)
+                                , span [ class [ "caret" ] ] []
+                                ]
+                            , ul
+                                [ class [ "dropdown-menu" ] ]
+                                [ li []
+                                    [ a [ href "#", onClick (ChangeDictionary Nrk) ] [ text <| getDescription Nrk ]
+                                    , a [ href "#", onClick (ChangeDictionary Erotics) ] [text <|  getDescription Erotics ]
                                     ]
                                 ]
                             ]

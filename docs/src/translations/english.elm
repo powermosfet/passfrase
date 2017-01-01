@@ -7,7 +7,7 @@ getText : T.Label -> Maybe String
 getText label =
     case label of
         T.CurrentLanguage ->
-            Just "Language: English"
+            Just "English"
 
         T.Title ->
             Just "Passfrase"

@@ -14,3 +14,12 @@ getUrl dict =
 
         Erotics ->
             "erotikk.json"
+
+getDescription : Dictionary -> String
+getDescription dict = 
+    case dict of
+        Nrk ->
+            "nrk.no"
+
+        Erotics ->
+            "noveller.no"

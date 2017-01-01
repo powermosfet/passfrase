@@ -14106,9 +14106,17 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
-var _user$project$Dictionary$getUrl = function (dict) {
+var _user$project$Dictionary$getDescription = function (dict) {
 	var _p0 = dict;
 	if (_p0.ctor === 'Nrk') {
+		return 'nrk.no';
+	} else {
+		return 'noveller.no';
+	}
+};
+var _user$project$Dictionary$getUrl = function (dict) {
+	var _p1 = dict;
+	if (_p1.ctor === 'Nrk') {
 		return 'nrk.json';
 	} else {
 		return 'erotikk.json';
@@ -14183,7 +14191,7 @@ var _user$project$Translations_English$getText = function (label) {
 	var _p0 = label;
 	switch (_p0.ctor) {
 		case 'CurrentLanguage':
-			return _elm_lang$core$Maybe$Just('Language: English');
+			return _elm_lang$core$Maybe$Just('English');
 		case 'Title':
 			return _elm_lang$core$Maybe$Just('Passfrase');
 		case 'PleaseWait':
@@ -14856,7 +14864,145 @@ var _user$project$Navbar$navbar = function (model) {
 													_1: {ctor: '[]'}
 												}
 											}),
-										_1: {ctor: '[]'}
+										_1: {
+											ctor: '::',
+											_0: A2(
+												_elm_lang$html$Html$li,
+												{
+													ctor: '::',
+													_0: _user$project$Navbar$class(
+														{
+															ctor: '::',
+															_0: 'dropdown',
+															_1: {ctor: '[]'}
+														}),
+													_1: {ctor: '[]'}
+												},
+												{
+													ctor: '::',
+													_0: A2(
+														_elm_lang$html$Html$a,
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html_Attributes$href('#'),
+															_1: {
+																ctor: '::',
+																_0: _user$project$Navbar$class(
+																	{
+																		ctor: '::',
+																		_0: 'dropdown-toggle',
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {
+																	ctor: '::',
+																	_0: A2(_elm_lang$html$Html_Attributes$attribute, 'data-toggle', 'dropdown'),
+																	_1: {
+																		ctor: '::',
+																		_0: A2(_elm_lang$html$Html_Attributes$attribute, 'role', 'button'),
+																		_1: {
+																			ctor: '::',
+																			_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-haspopup', 'true'),
+																			_1: {
+																				ctor: '::',
+																				_0: A2(_elm_lang$html$Html_Attributes$attribute, 'aria-expanded', 'false'),
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														},
+														{
+															ctor: '::',
+															_0: _elm_lang$html$Html$text(
+																_user$project$Dictionary$getDescription(model.dictionary)),
+															_1: {
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$span,
+																	{
+																		ctor: '::',
+																		_0: _user$project$Navbar$class(
+																			{
+																				ctor: '::',
+																				_0: 'caret',
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {ctor: '[]'}
+																	},
+																	{ctor: '[]'}),
+																_1: {ctor: '[]'}
+															}
+														}),
+													_1: {
+														ctor: '::',
+														_0: A2(
+															_elm_lang$html$Html$ul,
+															{
+																ctor: '::',
+																_0: _user$project$Navbar$class(
+																	{
+																		ctor: '::',
+																		_0: 'dropdown-menu',
+																		_1: {ctor: '[]'}
+																	}),
+																_1: {ctor: '[]'}
+															},
+															{
+																ctor: '::',
+																_0: A2(
+																	_elm_lang$html$Html$li,
+																	{ctor: '[]'},
+																	{
+																		ctor: '::',
+																		_0: A2(
+																			_elm_lang$html$Html$a,
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html_Attributes$href('#'),
+																				_1: {
+																					ctor: '::',
+																					_0: _elm_lang$html$Html_Events$onClick(
+																						_user$project$Message$ChangeDictionary(_user$project$Dictionary$Nrk)),
+																					_1: {ctor: '[]'}
+																				}
+																			},
+																			{
+																				ctor: '::',
+																				_0: _elm_lang$html$Html$text(
+																					_user$project$Dictionary$getDescription(_user$project$Dictionary$Nrk)),
+																				_1: {ctor: '[]'}
+																			}),
+																		_1: {
+																			ctor: '::',
+																			_0: A2(
+																				_elm_lang$html$Html$a,
+																				{
+																					ctor: '::',
+																					_0: _elm_lang$html$Html_Attributes$href('#'),
+																					_1: {
+																						ctor: '::',
+																						_0: _elm_lang$html$Html_Events$onClick(
+																							_user$project$Message$ChangeDictionary(_user$project$Dictionary$Erotics)),
+																						_1: {ctor: '[]'}
+																					}
+																				},
+																				{
+																					ctor: '::',
+																					_0: _elm_lang$html$Html$text(
+																						_user$project$Dictionary$getDescription(_user$project$Dictionary$Erotics)),
+																					_1: {ctor: '[]'}
+																				}),
+																			_1: {ctor: '[]'}
+																		}
+																	}),
+																_1: {ctor: '[]'}
+															}),
+														_1: {ctor: '[]'}
+													}
+												}),
+											_1: {ctor: '[]'}
+										}
 									}),
 								_1: {ctor: '[]'}
 							}),
