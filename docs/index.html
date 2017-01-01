@@ -22,15 +22,15 @@
       const startingModel = model ? JSON.parse(model) : null;
 
       var elmApp;
-      try {
-        elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
-      } catch (ex) {
+      // try {
+      //   elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
+      // } catch (ex) {
         elmApp = Elm.Main.embed(document.getElementById('container'), null);
-      }
+      // }
 
-      elmApp.ports.setStorage.subscribe(function (state) {
-        localStorage.setItem('model', JSON.stringify(state));
-      })
+      // elmApp.ports.setStorage.subscribe(function (state) {
+      //   localStorage.setItem('model', JSON.stringify(state));
+      // })
     </script>
   </body>
 </html>
