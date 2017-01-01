@@ -14111,10 +14111,10 @@ var _user$project$Dictionary$getUrl = function (dict) {
 	if (_p0.ctor === 'Nrk') {
 		return 'nrk.json';
 	} else {
-		return 'programmingbooks.json';
+		return 'erotikk.json';
 	}
 };
-var _user$project$Dictionary$ProgrammingBooks = {ctor: 'ProgrammingBooks'};
+var _user$project$Dictionary$Erotics = {ctor: 'Erotics'};
 var _user$project$Dictionary$Nrk = {ctor: 'Nrk'};
 
 var _user$project$Message$ChangeDictionary = function (a) {
@@ -14269,10 +14269,10 @@ var _user$project$Model$init = {
 				}
 			}
 		},
-		dictionary: _user$project$Dictionary$ProgrammingBooks,
+		dictionary: _user$project$Dictionary$Nrk,
 		language: 'en'
 	},
-	_1: _user$project$GetWords$getWords(_user$project$Dictionary$ProgrammingBooks)
+	_1: _user$project$GetWords$getWords(_user$project$Dictionary$Nrk)
 };
 var _user$project$Model$Model = F8(
 	function (a, b, c, d, e, f, g, h) {

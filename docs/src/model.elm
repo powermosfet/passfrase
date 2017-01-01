@@ -26,10 +26,10 @@ init = ( { insertSpaces = True
          , numberOfWords = 4
          , passphraseIndexes = [ 0, 1, 2 ]
          , words = [ "Vennligst", "vent", "..." ]
-         , dictionary = ProgrammingBooks
+         , dictionary = Nrk
          , language = "en"
          }
-       , getWords ProgrammingBooks
+       , getWords Nrk
        )
 -- init mayModel =
 --     case mayModel of
