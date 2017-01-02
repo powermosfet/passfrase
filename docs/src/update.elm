@@ -3,12 +3,13 @@ port module Update exposing (..)
 import Http
 import Random exposing (int, list)
 import Message exposing (Msg(..))
-import Model exposing (Model)
+import Model exposing (Model, Preferences, preferencesToValue)
 import GetWords exposing (getWords)
 import Platform.Cmd as Cmd exposing (batch)
+import Json.Encode exposing (Value, encode)
 
 
--- port setStorage : Model -> Cmd msg
+port setStorage : Value -> Cmd msg
 
 
 generateIndexes : Model -> ( Model, Cmd Msg )
@@ -19,45 +20,51 @@ generateIndexes model =
     in
         ( model
         , batch
-            [ Random.generate NewIndexes (list model.numberOfWords (int 0 maxIndex))
-            , Cmd.none -- setStorage { model | words = [] }
+            [ Random.generate NewIndexes (list model.preferences.numberOfWords (int 0 maxIndex))
+            , model.preferences
+                |> preferencesToValue
+                |> setStorage
             ]
         )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    case msg of
-        ToggleSpaces ->
-            generateIndexes { model | insertSpaces = not model.insertSpaces }
+    let
+        prf =
+            model.preferences
+    in
+        case msg of
+            ToggleSpaces ->
+                generateIndexes { model | preferences = { prf | insertSpaces = not prf.insertSpaces } }
 
-        TogglePwRules ->
-            generateIndexes { model | satisfyPwRules = not model.satisfyPwRules }
+            TogglePwRules ->
+                generateIndexes { model | preferences = { prf | satisfyPwRules = not prf.satisfyPwRules } }
 
-        ToggleAvoidNordicCharacters ->
-            generateIndexes { model | avoidNordicCharacters = not model.avoidNordicCharacters }
+            ToggleAvoidNordicCharacters ->
+                generateIndexes { model | preferences = { prf | avoidNordicCharacters = not prf.avoidNordicCharacters } }
 
-        ChangeNumberOfWords strN ->
-            let
-                n =
-                    Result.withDefault 0 (String.toInt strN)
-            in
-                generateIndexes { model | numberOfWords = n }
+            ChangeNumberOfWords strN ->
+                let
+                    n =
+                        Result.withDefault 0 (String.toInt strN)
+                in
+                    generateIndexes { model | preferences = { prf | numberOfWords = n } }
 
-        NewIndexes indexes ->
-            ( { model | passphraseIndexes = indexes }, Cmd.none )
+            NewIndexes indexes ->
+                ( { model | passphraseIndexes = indexes }, Cmd.none )
 
-        NewWords (Err _) ->
-            ( model, getWords model.dictionary )
+            NewWords (Err _) ->
+                ( model, getWords prf.dictionary )
 
-        NewWords (Ok words) ->
-            generateIndexes { model | words = words }
+            NewWords (Ok words) ->
+                generateIndexes { model | words = words }
 
-        NewPassphrase ->
-            generateIndexes model
+            NewPassphrase ->
+                generateIndexes model
 
-        ChangeLanguage language ->
-            generateIndexes { model | language = language }
+            ChangeLanguage language ->
+                generateIndexes { model | preferences = { prf | language = language } }
 
-        ChangeDictionary dictionary ->
-            ( { model | dictionary = dictionary }, getWords dictionary )
+            ChangeDictionary dictionary ->
+                ( { model | preferences = { prf | dictionary = dictionary } }, getWords dictionary )

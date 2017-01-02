@@ -12,20 +12,23 @@ generatePassphraseList model =
 generatePassphrase : Model -> String
 generatePassphrase model =
     let
+        prf =
+            model.preferences
+
         maybeRemoveNordicCharacters =
-            if model.avoidNordicCharacters then
+            if prf.avoidNordicCharacters then
                 removeNordicCharacters
             else
                 identity
 
         passPhraseList =
-            if model.satisfyPwRules then
+            if prf.satisfyPwRules then
                 List.map capitalize (generatePassphraseList model ++ [ "%5" ])
             else
                 (generatePassphraseList model)
 
         sep =
-            if model.insertSpaces then
+            if prf.insertSpaces then
                 " "
             else
                 ""

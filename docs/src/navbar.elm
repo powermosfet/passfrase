@@ -22,7 +22,7 @@ navbar : Model -> Html Msg
 navbar model =
     let
         t =
-            Internationalization.getText model.language
+            Internationalization.getText model.preferences.language
     in
         nav
             [ class [ "navbar", "navbar-default" ] ]
@@ -85,14 +85,14 @@ navbar model =
                                 , attribute "aria-haspopup" "true"
                                 , attribute "aria-expanded" "false"
                                 ]
-                                [ text (getDescription model.dictionary)
+                                [ text (getDescription model.preferences.dictionary)
                                 , span [ class [ "caret" ] ] []
                                 ]
                             , ul
                                 [ class [ "dropdown-menu" ] ]
                                 [ li []
                                     [ a [ href "#", onClick (ChangeDictionary Nrk) ] [ text <| getDescription Nrk ]
-                                    , a [ href "#", onClick (ChangeDictionary Erotics) ] [text <|  getDescription Erotics ]
+                                    , a [ href "#", onClick (ChangeDictionary Erotics) ] [ text <| getDescription Erotics ]
                                     ]
                                 ]
                             ]

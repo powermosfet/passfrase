@@ -22,8 +22,11 @@ import Navbar
 view : Model -> Html Msg
 view model =
     let
+        prf =
+            model.preferences
+
         t =
-            Internationalization.getText model.language
+            Internationalization.getText prf.language
     in
         div []
             [ Navbar.navbar model
@@ -35,16 +38,16 @@ view model =
                     , H.max "10"
                     , class [ "form-control" ]
                     , id "inputNumberOfWords"
-                    , value (toString model.numberOfWords)
+                    , value (toString prf.numberOfWords)
                     , onInput ChangeNumberOfWords
                     ]
                     []
                 ]
             , div [ class [ "form-group", "col-md-6" ] ]
                 [ label [] [ text (t Settings) ]
-                , checkbox (t InsertSpaces) ToggleSpaces model.insertSpaces
-                , checkbox (t SatisfyPwRules) TogglePwRules model.satisfyPwRules
-                , checkbox (t AvoidNordicCharacters) ToggleAvoidNordicCharacters model.avoidNordicCharacters
+                , checkbox (t InsertSpaces) ToggleSpaces prf.insertSpaces
+                , checkbox (t SatisfyPwRules) TogglePwRules prf.satisfyPwRules
+                , checkbox (t AvoidNordicCharacters) ToggleAvoidNordicCharacters prf.avoidNordicCharacters
                 ]
             , div [ class [ Cls.PassphrasePanel ] ]
                 [ div [ class [ "panel", "panel-default", "col-md-12" ] ]

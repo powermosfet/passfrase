@@ -18,19 +18,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="app.js"></script>
     <script>
-      const model = localStorage.getItem('model');
-      const startingModel = model ? JSON.parse(model) : null;
+      const model_ = localStorage.getItem('model');
+      const model = model_? JSON.parse(model_) : null;
 
       var elmApp;
-      // try {
-      //   elmApp = Elm.Main.embed(document.getElementById('container'), startingModel);
-      // } catch (ex) {
-        elmApp = Elm.Main.embed(document.getElementById('container'));
-      // }
+      try {
+        elmApp = Elm.Main.embed(document.getElementById('container'), model);
+      } catch (ex) {
+        elmApp = Elm.Main.embed(document.getElementById('container'), null);
+      }
 
-      // elmApp.ports.setStorage.subscribe(function (state) {
-      //   localStorage.setItem('model', JSON.stringify(state));
-      // })
+      elmApp.ports.setStorage.subscribe(function (state) {
+        localStorage.setItem('model', JSON.stringify(state));
+      })
     </script>
   </body>
 </html>
