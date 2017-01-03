@@ -14106,17 +14106,25 @@ var _rtfeldman$elm_css_helpers$Html_CssHelpers$Namespace = F4(
 		return {$class: a, classList: b, id: c, name: d};
 	});
 
-var _user$project$Dictionary$getDescription = function (dict) {
-	var _p0 = dict;
+var _user$project$Dictionary$dictionaryToValue = function (dictionary) {
+	var _p0 = dictionary;
 	if (_p0.ctor === 'Nrk') {
+		return _elm_lang$core$Json_Encode$string('nrk');
+	} else {
+		return _elm_lang$core$Json_Encode$string('erotics');
+	}
+};
+var _user$project$Dictionary$getDescription = function (dict) {
+	var _p1 = dict;
+	if (_p1.ctor === 'Nrk') {
 		return 'nrk.no';
 	} else {
 		return 'noveller.no';
 	}
 };
 var _user$project$Dictionary$getUrl = function (dict) {
-	var _p1 = dict;
-	if (_p1.ctor === 'Nrk') {
+	var _p2 = dict;
+	if (_p2.ctor === 'Nrk') {
 		return 'nrk.json';
 	} else {
 		return 'erotikk.json';
@@ -14124,6 +14132,52 @@ var _user$project$Dictionary$getUrl = function (dict) {
 };
 var _user$project$Dictionary$Erotics = {ctor: 'Erotics'};
 var _user$project$Dictionary$Nrk = {ctor: 'Nrk'};
+var _user$project$Dictionary$dictionaryDecoder = function (dictionary) {
+	var _p3 = dictionary;
+	switch (_p3) {
+		case 'nrk':
+			return _elm_lang$core$Json_Decode$succeed(_user$project$Dictionary$Nrk);
+		case 'erotics':
+			return _elm_lang$core$Json_Decode$succeed(_user$project$Dictionary$Erotics);
+		default:
+			return _elm_lang$core$Json_Decode$fail(
+				A2(_elm_lang$core$Basics_ops['++'], 'Could not parse dictionary ', dictionary));
+	}
+};
+
+var _user$project$Translations_Types$languageToValue = function (lang) {
+	return _elm_lang$core$Json_Encode$string(
+		function () {
+			var _p0 = lang;
+			if (_p0.ctor === 'Nor') {
+				return 'no';
+			} else {
+				return 'en';
+			}
+		}());
+};
+var _user$project$Translations_Types$AvoidNordicCharacters = {ctor: 'AvoidNordicCharacters'};
+var _user$project$Translations_Types$SatisfyPwRules = {ctor: 'SatisfyPwRules'};
+var _user$project$Translations_Types$InsertSpaces = {ctor: 'InsertSpaces'};
+var _user$project$Translations_Types$Settings = {ctor: 'Settings'};
+var _user$project$Translations_Types$NumberOfWords = {ctor: 'NumberOfWords'};
+var _user$project$Translations_Types$PleaseWait = {ctor: 'PleaseWait'};
+var _user$project$Translations_Types$Title = {ctor: 'Title'};
+var _user$project$Translations_Types$CurrentLanguage = {ctor: 'CurrentLanguage'};
+var _user$project$Translations_Types$Eng = {ctor: 'Eng'};
+var _user$project$Translations_Types$Nor = {ctor: 'Nor'};
+var _user$project$Translations_Types$languageDecoder = function (lang) {
+	var _p1 = lang;
+	switch (_p1) {
+		case 'no':
+			return _elm_lang$core$Json_Decode$succeed(_user$project$Translations_Types$Nor);
+		case 'en':
+			return _elm_lang$core$Json_Decode$succeed(_user$project$Translations_Types$Eng);
+		default:
+			return _elm_lang$core$Json_Decode$fail(
+				A2(_elm_lang$core$Basics_ops['++'], 'Could not parse language ', lang));
+	}
+};
 
 var _user$project$Message$ChangeDictionary = function (a) {
 	return {ctor: 'ChangeDictionary', _0: a};
@@ -14156,15 +14210,6 @@ var _user$project$GetWords$getWords = function (dict) {
 			_user$project$GetWords$parseWords));
 };
 
-var _user$project$Translations_Types$AvoidNordicCharacters = {ctor: 'AvoidNordicCharacters'};
-var _user$project$Translations_Types$SatisfyPwRules = {ctor: 'SatisfyPwRules'};
-var _user$project$Translations_Types$InsertSpaces = {ctor: 'InsertSpaces'};
-var _user$project$Translations_Types$Settings = {ctor: 'Settings'};
-var _user$project$Translations_Types$NumberOfWords = {ctor: 'NumberOfWords'};
-var _user$project$Translations_Types$PleaseWait = {ctor: 'PleaseWait'};
-var _user$project$Translations_Types$Title = {ctor: 'Title'};
-var _user$project$Translations_Types$CurrentLanguage = {ctor: 'CurrentLanguage'};
-
 var _user$project$Translations_Norwegian$getText = function (label) {
 	var _p0 = label;
 	switch (_p0.ctor) {
@@ -14191,79 +14236,45 @@ var _user$project$Translations_English$getText = function (label) {
 	var _p0 = label;
 	switch (_p0.ctor) {
 		case 'CurrentLanguage':
-			return _elm_lang$core$Maybe$Just('English');
+			return 'English';
 		case 'Title':
-			return _elm_lang$core$Maybe$Just('Passfrase');
+			return 'Passfrase';
 		case 'PleaseWait':
-			return _elm_lang$core$Maybe$Just('Please wait...');
+			return 'Please wait...';
 		case 'NumberOfWords':
-			return _elm_lang$core$Maybe$Just('Number of words');
+			return 'Number of words';
 		case 'Settings':
-			return _elm_lang$core$Maybe$Just('Settings');
+			return 'Settings';
 		case 'InsertSpaces':
-			return _elm_lang$core$Maybe$Just('Insert spaces');
+			return 'Insert spaces';
 		case 'SatisfyPwRules':
-			return _elm_lang$core$Maybe$Just('Satisfy silly password rules');
+			return 'Satisfy silly password rules';
 		default:
-			return _elm_lang$core$Maybe$Just('Avoid nordic characters');
+			return 'Avoid nordic characters';
 	}
 };
 
-var _user$project$Internationalization$textMap = _elm_lang$core$Dict$fromList(
-	{
-		ctor: '::',
-		_0: {ctor: '_Tuple2', _0: 'no', _1: _user$project$Translations_Norwegian$getText},
-		_1: {
-			ctor: '::',
-			_0: {ctor: '_Tuple2', _0: 'en', _1: _user$project$Translations_English$getText},
-			_1: {ctor: '[]'}
-		}
-	});
+var _user$project$Internationalization$textGetter = function (lang) {
+	var _p0 = lang;
+	if (_p0.ctor === 'Nor') {
+		return _user$project$Translations_Norwegian$getText;
+	} else {
+		return function (_p1) {
+			return _elm_lang$core$Maybe$Just(
+				_user$project$Translations_English$getText(_p1));
+		};
+	}
+};
 var _user$project$Internationalization$getText = F2(
 	function (lang, label) {
-		var englishTexts = A2(_elm_lang$core$Dict$get, 'en', _user$project$Internationalization$textMap);
-		var localTexts = A2(_elm_lang$core$Dict$get, lang, _user$project$Internationalization$textMap);
+		var english = _user$project$Translations_English$getText;
+		var local = _user$project$Internationalization$textGetter(lang);
 		return A2(
 			_elm_lang$core$Maybe$withDefault,
-			A2(
-				_elm_lang$core$Maybe$withDefault,
-				_elm_lang$core$Basics$toString(label),
-				A2(
-					_elm_lang$core$Maybe$andThen,
-					F2(
-						function (x, y) {
-							return y(x);
-						})(label),
-					englishTexts)),
-			A2(
-				_elm_lang$core$Maybe$andThen,
-				F2(
-					function (x, y) {
-						return y(x);
-					})(label),
-				localTexts));
+			english(label),
+			local(label));
 	});
 
-var _user$project$Model$dictionaryDecoder = function (dictionary) {
-	var _p0 = dictionary;
-	switch (_p0) {
-		case 'nrk':
-			return _elm_lang$core$Json_Decode$succeed(_user$project$Dictionary$Nrk);
-		case 'erotics':
-			return _elm_lang$core$Json_Decode$succeed(_user$project$Dictionary$Erotics);
-		default:
-			return _elm_lang$core$Json_Decode$fail(
-				A2(_elm_lang$core$Basics_ops['++'], 'Could not parse dictionary ', dictionary));
-	}
-};
-var _user$project$Model$dictionaryToValue = function (dictionary) {
-	var _p1 = dictionary;
-	if (_p1.ctor === 'Nrk') {
-		return _elm_lang$core$Json_Encode$string('nrk');
-	} else {
-		return _elm_lang$core$Json_Encode$string('erotics');
-	}
-};
 var _user$project$Model$preferencesToValue = function (prf) {
 	return _elm_lang$core$Json_Encode$object(
 		{
@@ -14299,14 +14310,14 @@ var _user$project$Model$preferencesToValue = function (prf) {
 							_0: {
 								ctor: '_Tuple2',
 								_0: 'language',
-								_1: _elm_lang$core$Json_Encode$string(prf.language)
+								_1: _user$project$Translations_Types$languageToValue(prf.language)
 							},
 							_1: {
 								ctor: '::',
 								_0: {
 									ctor: '_Tuple2',
 									_0: 'dictionary',
-									_1: _user$project$Model$dictionaryToValue(prf.dictionary)
+									_1: _user$project$Dictionary$dictionaryToValue(prf.dictionary)
 								},
 								_1: {ctor: '[]'}
 							}
@@ -14327,21 +14338,24 @@ var _user$project$Model$preferencesDecoder = A7(
 	A2(_elm_lang$core$Json_Decode$field, 'satisfyPwRules', _elm_lang$core$Json_Decode$bool),
 	A2(_elm_lang$core$Json_Decode$field, 'avoidNordicCharacters', _elm_lang$core$Json_Decode$bool),
 	A2(_elm_lang$core$Json_Decode$field, 'numberOfWords', _elm_lang$core$Json_Decode$int),
-	A2(_elm_lang$core$Json_Decode$field, 'language', _elm_lang$core$Json_Decode$string),
+	A2(
+		_elm_lang$core$Json_Decode$field,
+		'language',
+		A2(_elm_lang$core$Json_Decode$andThen, _user$project$Translations_Types$languageDecoder, _elm_lang$core$Json_Decode$string)),
 	A2(
 		_elm_lang$core$Json_Decode$field,
 		'dictionary',
-		A2(_elm_lang$core$Json_Decode$andThen, _user$project$Model$dictionaryDecoder, _elm_lang$core$Json_Decode$string)));
+		A2(_elm_lang$core$Json_Decode$andThen, _user$project$Dictionary$dictionaryDecoder, _elm_lang$core$Json_Decode$string)));
 var _user$project$Model$init = function (encModel) {
-	var initPrefs = {insertSpaces: true, satisfyPwRules: false, avoidNordicCharacters: false, numberOfWords: 4, dictionary: _user$project$Dictionary$Nrk, language: 'en'};
+	var initPrefs = {insertSpaces: true, satisfyPwRules: false, avoidNordicCharacters: false, numberOfWords: 4, dictionary: _user$project$Dictionary$Nrk, language: _user$project$Translations_Types$Eng};
 	var preferences = A2(
 		_elm_lang$core$Maybe$withDefault,
 		initPrefs,
 		A2(
 			_elm_lang$core$Maybe$andThen,
-			function (_p2) {
+			function (_p0) {
 				return _elm_lang$core$Result$toMaybe(
-					A2(_elm_lang$core$Json_Decode$decodeValue, _user$project$Model$preferencesDecoder, _p2));
+					A2(_elm_lang$core$Json_Decode$decodeValue, _user$project$Model$preferencesDecoder, _p0));
 			},
 			encModel));
 	var model = {
@@ -14935,7 +14949,7 @@ var _user$project$Navbar$navbar = function (model) {
 																			_1: {
 																				ctor: '::',
 																				_0: _elm_lang$html$Html_Events$onClick(
-																					_user$project$Message$ChangeLanguage('no')),
+																					_user$project$Message$ChangeLanguage(_user$project$Translations_Types$Nor)),
 																				_1: {ctor: '[]'}
 																			}
 																		},
@@ -14954,7 +14968,7 @@ var _user$project$Navbar$navbar = function (model) {
 																				_1: {
 																					ctor: '::',
 																					_0: _elm_lang$html$Html_Events$onClick(
-																						_user$project$Message$ChangeLanguage('en')),
+																						_user$project$Message$ChangeLanguage(_user$project$Translations_Types$Eng)),
 																					_1: {ctor: '[]'}
 																				}
 																			},

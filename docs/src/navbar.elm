@@ -70,8 +70,8 @@ navbar model =
                             , ul
                                 [ class [ "dropdown-menu" ] ]
                                 [ li []
-                                    [ a [ href "#", onClick (ChangeLanguage "no") ] [ text "Norsk" ]
-                                    , a [ href "#", onClick (ChangeLanguage "en") ] [ text "English" ]
+                                    [ a [ href "#", onClick (ChangeLanguage Nor) ] [ text "Norsk" ]
+                                    , a [ href "#", onClick (ChangeLanguage Eng) ] [ text "English" ]
                                     ]
                                 ]
                             ]

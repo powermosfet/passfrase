@@ -2,7 +2,8 @@ module Model exposing (..)
 
 import Message exposing (Msg)
 import GetWords exposing (getWords)
-import Dictionary exposing (Dictionary(..))
+import Dictionary exposing (Dictionary(..), dictionaryToValue, dictionaryDecoder)
+import Translations.Types exposing (Language(..), languageToValue, languageDecoder)
 import Json.Encode exposing (Value, bool, string, int)
 import Json.Decode as Json
 import Json.Decode exposing (andThen)
@@ -13,7 +14,7 @@ type alias Preferences =
     , satisfyPwRules : Bool
     , avoidNordicCharacters : Bool
     , numberOfWords : Int
-    , language : String
+    , language : Language
     , dictionary : Dictionary
     }
 
@@ -34,7 +35,7 @@ init encModel =
             , avoidNordicCharacters = False
             , numberOfWords = 4
             , dictionary = Nrk
-            , language = "en"
+            , language = Eng
             }
 
         preferences =
@@ -63,19 +64,9 @@ preferencesToValue prf =
         , ( "satisfyPwRules", bool prf.satisfyPwRules )
         , ( "avoidNordicCharacters", bool prf.avoidNordicCharacters )
         , ( "numberOfWords", int prf.numberOfWords )
-        , ( "language", string prf.language )
+        , ( "language", languageToValue prf.language )
         , ( "dictionary", dictionaryToValue prf.dictionary )
         ]
-
-
-dictionaryToValue : Dictionary -> Value
-dictionaryToValue dictionary =
-    case dictionary of
-        Nrk ->
-            string "nrk"
-
-        Erotics ->
-            string "erotics"
 
 
 preferencesDecoder : Json.Decoder Preferences
@@ -85,18 +76,5 @@ preferencesDecoder =
         (Json.field "satisfyPwRules" Json.bool)
         (Json.field "avoidNordicCharacters" Json.bool)
         (Json.field "numberOfWords" Json.int)
-        (Json.field "language" Json.string)
+        (Json.field "language" (Json.string |> andThen languageDecoder))
         (Json.field "dictionary" (Json.string |> andThen dictionaryDecoder))
-
-
-dictionaryDecoder : String -> Json.Decoder Dictionary
-dictionaryDecoder dictionary =
-    case dictionary of
-        "nrk" ->
-            Json.succeed Nrk
-
-        "erotics" ->
-            Json.succeed Erotics
-
-        _ ->
-            Json.fail ("Could not parse dictionary " ++ dictionary)

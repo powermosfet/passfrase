@@ -2,25 +2,30 @@ module Internationalization exposing (..)
 
 import Dict
 import Maybe exposing (withDefault, andThen)
+import Translations.Types exposing (Language(..), Label)
 import Translations.Norwegian as Nor
 import Translations.English as Eng
 
 
-textMap =
-    Dict.fromList
-        [ ( "no", Nor.getText )
-        , ( "en", Eng.getText )
-        ]
+textGetter : Language -> (Label -> Maybe String)
+textGetter lang =
+    case lang of
+        Nor ->
+            Nor.getText
+
+        Eng ->
+            Just << Eng.getText
 
 
+getText : Language -> Label -> String
 getText lang label =
     let
-        localTexts =
-            Dict.get lang textMap
+        local =
+            textGetter lang
 
-        englishTexts =
-            Dict.get "en" textMap
+        english =
+            Eng.getText
     in
-        withDefault
-            (withDefault (toString label) (englishTexts |> andThen ((|>) label)))
-            (localTexts |> andThen ((|>) label))
+        local label
+            |> withDefault
+                (english label)

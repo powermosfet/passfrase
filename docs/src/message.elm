@@ -2,6 +2,7 @@ module Message exposing (Msg(..))
 
 import Http
 import Dictionary exposing (Dictionary)
+import Translations.Types exposing (Language)
 
 
 type Msg
@@ -12,5 +13,5 @@ type Msg
     | NewIndexes (List Int)
     | NewWords (Result Http.Error (List String))
     | NewPassphrase
-    | ChangeLanguage String
+    | ChangeLanguage Language
     | ChangeDictionary Dictionary

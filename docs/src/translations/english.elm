@@ -3,29 +3,29 @@ module Translations.English exposing (..)
 import Translations.Types as T
 
 
-getText : T.Label -> Maybe String
+getText : T.Label -> String
 getText label =
     case label of
         T.CurrentLanguage ->
-            Just "English"
+            "English"
 
         T.Title ->
-            Just "Passfrase"
+            "Passfrase"
 
         T.PleaseWait ->
-            Just "Please wait..."
+            "Please wait..."
 
         T.NumberOfWords ->
-            Just "Number of words"
+            "Number of words"
 
         T.Settings ->
-            Just "Settings"
+            "Settings"
 
         T.InsertSpaces ->
-            Just "Insert spaces"
+            "Insert spaces"
 
         T.SatisfyPwRules ->
-            Just "Satisfy silly password rules"
+            "Satisfy silly password rules"
 
         T.AvoidNordicCharacters ->
-            Just "Avoid nordic characters"
+            "Avoid nordic characters"
