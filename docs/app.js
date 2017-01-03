@@ -14546,7 +14546,9 @@ var _user$project$Passphrase$generatePassphrase = function (model) {
 				_1: {ctor: '[]'}
 			})) : _user$project$Passphrase$generatePassphraseList(model);
 	var sep = prf.insertSpaces ? ' ' : '';
-	return maybeRemoveNordicCharacters(
+	return _elm_lang$core$Native_Utils.eq(
+		passPhraseList,
+		{ctor: '[]'}) ? A2(_user$project$Internationalization$getText, model.preferences.language, _user$project$Translations_Types$PleaseWait) : maybeRemoveNordicCharacters(
 		A2(_elm_lang$core$String$join, sep, passPhraseList));
 };
 

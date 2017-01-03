@@ -2,6 +2,8 @@ module Passphrase exposing (..)
 
 import Regex exposing (HowMany(All), regex, replace)
 import Model exposing (Model)
+import Internationalization
+import Translations.Types exposing (Label(PleaseWait))
 
 
 generatePassphraseList : Model -> List String
@@ -33,7 +35,11 @@ generatePassphrase model =
             else
                 ""
     in
-        maybeRemoveNordicCharacters <| String.join sep passPhraseList
+        if passPhraseList == [] then
+            Internationalization.getText model.preferences.language PleaseWait
+        else
+            String.join sep passPhraseList
+                |> maybeRemoveNordicCharacters
 
 
 removeNordicCharacters : String -> String
